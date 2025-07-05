@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   description: 'This is my portfolio.',
   openGraph: {
     title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    description: 'I\'m Dufran,This is my portfolio.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'I\'m Dufran',
     locale: 'en_US',
     type: 'website',
   },
@@ -53,7 +53,7 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+        <main className="flex-auto justify-evenly min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
           {children}
           <Footer />
