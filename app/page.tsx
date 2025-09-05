@@ -1,5 +1,5 @@
-import { BlogPosts } from 'app/components/posts'
-import { text } from 'stream/consumers';
+import { BlogPosts } from "app/components/posts";
+import { text } from "stream/consumers";
 
 const poem = `At one point along the river of time,
 I studied the grit of daily life with care,
@@ -32,15 +32,13 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        I'm Dufran
+        Hi! I'm Dufran
       </h1>
-      <p className="mb-4">
-        {`A programmer, writer, life artist.`}
-      </p>
-      <div className="my-8" style={{ whiteSpace: 'pre-wrap'}}>
+      <p className="mb-4">{`A programmer, writer, life artist.`}</p>
+      <div className="my-8" style={{ whiteSpace: "pre-wrap" }}>
         {poem}
         {/* <BlogPosts /> */}
       </div>
     </section>
-  )
+  );
 }
