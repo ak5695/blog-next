@@ -32,7 +32,7 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        Hi! I'm Dufran
+        Hi&nbsp;,&nbsp;I'm&nbsp;Dufran
       </h1>
       <p className="mb-4">{`A programmer, writer, life artist.`}</p>
       <div className="my-8" style={{ whiteSpace: "pre-wrap" }}>
