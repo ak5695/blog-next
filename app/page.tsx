@@ -30,11 +30,11 @@ and ride like a knight into the endless night of death.`;
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+      <h1 className="mb-4 text-2xl font-semibold tracking-tighter">
         Hi&nbsp;,&nbsp;I'm&nbsp;Dufran
       </h1>
-      <p className="mb-4">{`~~ A programmer, writer, life artist`}</p>
-      <div className="my-8" style={{ whiteSpace: "pre-wrap" }}>
+      <p className="text-right">{`a programmer, writer, life artist`}</p>
+      <div className="my-6" style={{ whiteSpace: "pre-wrap" }}>
         {poem}
         {/* <BlogPosts /> */}
       </div>
