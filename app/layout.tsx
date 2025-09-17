@@ -56,7 +56,7 @@ export default function RootLayout({
         <link rel="icon" href="/freedom.png" sizes="32x32" />
       </header>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto justify-evenly min-w-0 mt-6 flex flex-col px-2 md:px-0">
+        <main className="flex-auto justify-evenly min-w-0 mt-[6rem] flex flex-col px-2 md:px-0">
           <Navbar />
           {children}
           <Footer />
