@@ -3,15 +3,14 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <main className="px-2 py-4 max-w-[17rem]">
+    <main className="px-2 py-4 max-w-[20rem]">
       <ul className="space-y-4">
-                <li className="flex justify-between">
-          E-mail 
+        <li className="flex justify-between">
+          E-mail
           <span>ji569414123@gmail.com</span>
-       
         </li>
         <li className="flex justify-between">
-          X 
+          X
           <Link
             href="https://x.com/dufran_cn"
             target="_blank"
@@ -33,7 +32,7 @@ export default function Page() {
           </Link>
         </li>
         <li className="flex justify-between">
-          WeChat 
+          WeChat
           <Image
             className=""
             src="/weixin.jpg"

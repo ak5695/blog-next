@@ -19,7 +19,7 @@ const navItems = {
 export function Navbar() {
   return (
     <aside
-      className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black shadow-md tracking-tight "
+      className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black/70 shadow-md tracking-tight "
       style={{ height: "5rem" }}
     >
       <nav
@@ -39,7 +39,7 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all w-[5rem] text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-0 "
+                className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-0 "
               >
                 {name}
               </Link>

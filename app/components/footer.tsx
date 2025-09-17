@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 function ArrowIcon() {
   return (
@@ -14,57 +14,24 @@ function ArrowIcon() {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export default function Footer() {
   return (
-    <footer className="mb-1rem">
-      {/* <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="/rss"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">rss</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/vercel/next.js"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://vercel.com/templates/next.js/portfolio-starter-kit"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">view source</p>
-          </a>
-        </li>
-      </ul> */}
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">           
-        © {new Date().getFullYear()} All rights reserved.
-         <Image
-                    className="inline-block ml-4 cursor-pointer"
-                    src={"/freedom.png"}
-                    width={20}
-                    height={20}
-                    alt="freedom"
-                  ></Image>
-      </p>
-    </footer>
-  )
+    <aside   className="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-black/90 shadow-md tracking-tight ">
+      <footer className="flex justify-end items-center max-w-xl h-full fade md:overflow-auto scroll-pr-6  mx-4  lg:mx-auto">
+        <p className=" text-neutral-600 dark:text-neutral-300">
+          © {new Date().getFullYear()} All rights reserved.
+          <Image
+            className="inline-block ml-4 cursor-pointer"
+            src={"/freedom.png"}
+            width={20}
+            height={20}
+            alt="freedom"
+          ></Image>
+        </p>
+      </footer>
+    </aside>
+  );
 }
