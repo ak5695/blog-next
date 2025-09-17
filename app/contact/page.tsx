@@ -10,7 +10,7 @@ export default function Page() {
           <span>ji569414123@gmail.com</span>
         </li>
         <li className="flex justify-between">
-          X
+          X.com
           <Link
             href="https://x.com/dufran_cn"
             target="_blank"
