@@ -19,17 +19,10 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <aside   className="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-black/90 shadow-md tracking-tight ">
+    <aside className="fixed bottom-0 left-0 w-full z-50  shadow-md tracking-tight ">
       <footer className="flex justify-end items-center max-w-xl h-full fade md:overflow-auto scroll-pr-6  mx-4  lg:mx-auto">
-        <p className=" text-neutral-600 dark:text-neutral-300">
+        <p className=" text-neutral-600 dark:text-neutral-300/30">
           © {new Date().getFullYear()} All rights reserved.
-          <Image
-            className="inline-block ml-4 cursor-pointer"
-            src={"/freedom.png"}
-            width={20}
-            height={20}
-            alt="freedom"
-          ></Image>
         </p>
       </footer>
     </aside>

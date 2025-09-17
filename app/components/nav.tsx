@@ -20,7 +20,7 @@ export function Navbar() {
   return (
     <aside
       className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black/70 shadow-md tracking-tight "
-      style={{ height: "5rem" }}
+      style={{ height: "3rem" }}
     >
       <nav
         className="flex justify-start items-center max-w-xl h-full fade md:overflow-auto scroll-pr-6  mx-4  lg:mx-auto"
@@ -30,8 +30,8 @@ export function Navbar() {
           <Image
             className="inline-block mr-4 cursor-pointer"
             src={"/freedom.png"}
-            width={40}
-            height={40}
+            width={30}
+            height={30}
             alt="freedom"
           ></Image>
           {Object.entries(navItems).map(([path, { name }]) => {
