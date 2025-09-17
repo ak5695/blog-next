@@ -1,20 +1,21 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { baseUrl } from 'app/sitemap'
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { CustomMDX } from "app/components/mdx";
+import { formatDate, getBlogPosts } from "app/blog/utils";
+import { baseUrl } from "app/sitemap";
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts()
+  let posts = getBlogPosts();
 
   return posts.map((post) => ({
     slug: post.slug,
-  }))
+  }));
 }
 
 export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
-    return
+    return;
   }
 
   let {
@@ -22,10 +23,10 @@ export function generateMetadata({ params }) {
     publishedAt: publishedTime,
     summary: description,
     image,
-  } = post.metadata
+  } = post.metadata;
   let ogImage = image
     ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -33,7 +34,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       publishedTime,
       url: `${baseUrl}/blog/${post.slug}`,
       images: [
@@ -43,30 +44,49 @@ export function generateMetadata({ params }) {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [ogImage],
     },
-  }
+  };
 }
 
 export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+  const posts = getBlogPosts();
+  const currentIndex = posts.findIndex((p) => p.slug === params.slug);
+  const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
+  const nextPost =
+    currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+  let post = posts[currentIndex];
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
     <section>
+      {/* 面包屑导航 */}
+      <nav className="mb-4 text-sm text-neutral-500 dark:text-neutral-400 flex items-center space-x-2">
+        <Link href="/" className="hover:underline">
+          home
+        </Link>
+        <span>/</span>
+        <Link href="/blog" className="hover:underline">
+          blog
+        </Link>
+        <span>/</span>
+        <span className="font-medium text-neutral-700 dark:text-neutral-200">
+          {post.metadata.title}
+        </span>
+      </nav>
       <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
@@ -76,8 +96,8 @@ export default function Blog({ params }) {
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
-              '@type': 'Person',
-              name: 'My Portfolio',
+              "@type": "Person",
+              name: "My Portfolio",
             },
           }),
         }}
@@ -93,6 +113,29 @@ export default function Blog({ params }) {
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
+      {/* 上一篇/下一篇导航 */}
+      <div className="flex justify-between items-center mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-700">
+        {prevPost ? (
+          <Link
+            href={`/blog/${prevPost.slug}`}
+            className="text-blue-600 hover:underline"
+          >
+            ← Prev：{prevPost.metadata.title}
+          </Link>
+        ) : (
+          <span />
+        )}
+        {nextPost ? (
+          <Link
+            href={`/blog/${nextPost.slug}`}
+            className="text-blue-600 hover:underline"
+          >
+            Next：{nextPost.metadata.title} →
+          </Link>
+        ) : (
+          <span />
+        )}
+      </div>
     </section>
-  )
+  );
 }
