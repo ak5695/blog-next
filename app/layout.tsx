@@ -52,11 +52,11 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <header>
+      <head>
         <link rel="icon" href="/freedom.png" sizes="32x32" />
-      </header>
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto justify-evenly min-w-0 my-[6rem] flex flex-col px-2 md:px-0">
+      </head>
+      <body className="antialiased h-screen flex flex-col max-w-xl lg:mx-auto">
+        <main className="flex-1 min-w-0 flex flex-col justify-start mt-[4rem] px-2 md:px-0">
           <Navbar />
           {children}
         </main>

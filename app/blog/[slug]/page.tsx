@@ -78,7 +78,7 @@ export default function Blog({ params }) {
         <CustomMDX source={post.content} />
       </article>
       {/* 上一篇/下一篇导航 */}
-      <div className="flex justify-between items-center mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-700">
+      <div className="flex justify-between items-center my-12 pt-8 border-t border-neutral-200 dark:border-neutral-700">
         {prevPost ? (
           <Link href={`/blog/${prevPost.slug}`} className=" underline">
             ← Prev：{prevPost.metadata.title}
@@ -95,7 +95,7 @@ export default function Blog({ params }) {
         )}
       </div>
       {/* 面包屑导航 */}
-      <nav className="mt-8 text-sm text-neutral-500 dark:text-neutral-400 flex items-center space-x-2">
+      {/* <nav className="mt-8 text-sm text-neutral-500 dark:text-neutral-400 flex items-center space-x-2">
         <Link href="/" className="hover:underline">
           home
         </Link>
@@ -107,7 +107,7 @@ export default function Blog({ params }) {
         <span className="font-medium text-neutral-700 dark:text-neutral-200">
           {post.metadata.title}
         </span>
-      </nav>
+      </nav> */}
       <script
         type="application/ld+json"
         suppressHydrationWarning

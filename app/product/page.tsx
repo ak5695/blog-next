@@ -6,14 +6,13 @@ export default function Product() {
       <ul className="space-y-4">
         <li className="flex justify-between">
           <Link
-            href="https://www.andy-dufran.life"
+            href="https://www.aristotle.dufran.cn"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
-            Coach.AI 
+            Aristotle.AI
           </Link>
-          <span>(building)</span>
           2025.09
         </li>
         <li className="flex justify-between">

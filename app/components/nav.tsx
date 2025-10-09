@@ -18,7 +18,7 @@ const navItems = {
 
 export function Navbar() {
   return (
-    <aside
+    <header
       className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black/70 shadow-md tracking-tight "
       style={{ height: "3rem" }}
     >
@@ -47,6 +47,6 @@ export function Navbar() {
           })}
         </div>
       </nav>
-    </aside>
+    </header>
   );
 }
