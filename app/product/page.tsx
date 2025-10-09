@@ -22,7 +22,7 @@ export default function Product() {
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
-            Corner Design Tool
+            CSS Corner Designer
           </Link>
           2025.08
         </li>
