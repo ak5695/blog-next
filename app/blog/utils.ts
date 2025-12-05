@@ -6,6 +6,7 @@ type Metadata = {
   title_zh?: string;
   publishedAt: string;
   summary: string;
+  summary_zh?: string;
   image?: string;
 };
 
