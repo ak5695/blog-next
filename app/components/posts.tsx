@@ -1,12 +1,15 @@
-import Link from "next/link";
-import { formatDate, getBlogPosts } from "app/blog/utils";
+"use client";
 
-export function BlogPosts() {
-  let allBlogs = getBlogPosts();
+import Link from "next/link";
+import { formatDate } from "app/blog/date";
+import { useLanguage } from "app/context/LanguageContext";
+
+export function BlogPosts({ posts }: { posts: any[] }) {
+  const { language } = useLanguage();
 
   return (
     <div>
-      {allBlogs
+      {posts
         .sort((a, b) => {
           if (
             new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
@@ -22,11 +25,13 @@ export function BlogPosts() {
             href={`/blog/${post.slug}`}
           >
             <div className="w-full border-0 flex flex-col md:flex-row space-x-0 md:space-x-2 border-b-2 border-transparent hover:border-white ">
-              <p className="text-neutral-600 dark:text-neutral-400 w-[150px] tabular-nums">
+              <p className="text-neutral-600 dark:text-neutral-400 w-[150px] tabular-nums shrink-0">
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
+              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight flex-1">
+                {language === "zh" && post.metadata.title_zh
+                  ? post.metadata.title_zh
+                  : post.metadata.title}
               </p>
             </div>
           </Link>
