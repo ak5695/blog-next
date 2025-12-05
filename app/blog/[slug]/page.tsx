@@ -83,7 +83,7 @@ export default function Blog({ params }) {
         summary={post.metadata.summary}
         summary_zh={post.metadata.summary_zh}
       />
-            <article className="prose">
+      <article className="prose">
         <CustomMDX source={post.content} />
       </article>
       {/* 上一篇/下一篇导航 */}
