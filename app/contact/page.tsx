@@ -46,7 +46,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
-            杜弗兰
+            杜弗兰 软硬件分享
           </Link>
         </li>
         <li className="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-4">
@@ -57,7 +57,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
-            杜弗兰
+            杜弗兰 Dufran
           </Link>
         </li>
         <li className="flex justify-between items-start border-b border-neutral-100 dark:border-neutral-800 pb-4">
