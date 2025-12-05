@@ -54,7 +54,7 @@ export default function Product() {
 
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">
+      <h1 className="font-semibold text-base mb-8 tracking-tighter">
         {t("product.title")}
       </h1>
       <div className="grid grid-cols-1 gap-4">
@@ -64,7 +64,7 @@ export default function Product() {
             className="flex flex-col p-3 border border-neutral-200 dark:border-neutral-800 rounded-xl hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all hover:shadow-sm"
           >
             <div className="flex justify-between items-start mb-3">
-              <h2 className="font-semibold text-xl">{product.name}</h2>
+              <h2 className="font-semibold text-base">{product.name}</h2>
               <span className="text-sm text-neutral-500 font-mono mt-1">
                 {product.date}
               </span>
