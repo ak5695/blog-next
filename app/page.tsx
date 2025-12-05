@@ -33,7 +33,7 @@ export default function Page() {
       <h1 className="mb-4 text-2xl font-semibold tracking-tighter">
         Hi&nbsp;,&nbsp;I'm&nbsp;Dufran
       </h1>
-      <p className="text-right">{`a programmer, writer.To be a life artist`}</p>
+      <p className="text-right">{`An AI coder, a writer, and to be a life artist.`}</p>
       <div className="my-4" style={{ whiteSpace: "pre-wrap" }}>
         {poem}
         {/* <BlogPosts /> */}
