@@ -27,12 +27,12 @@ function Table({ data }) {
 }
 
 function CustomLink(props) {
-  let href = props.href
+  let href = props.href;
   const handleClick = () => {
-    if (typeof navigator !== 'undefined' && navigator.vibrate) {
+    if (typeof navigator !== "undefined" && navigator.vibrate) {
       navigator.vibrate(15);
     }
-  }
+  };
 
   if (href.startsWith("/")) {
     return (
