@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import { LanguageProvider } from "./context/LanguageContext";
 import Providers from "./providers";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -58,6 +59,17 @@ export default function RootLayout({
         <link rel="icon" href="/freedom.png" sizes="32x32" />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
+        <NextTopLoader
+          color="#2299DD"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+        />
         <Providers>
           <LanguageProvider>
             <main className="flex-1 max-w-2xl mx-auto mt-20 flex flex-col px-4 w-full">

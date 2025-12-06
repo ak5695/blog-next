@@ -1,5 +1,5 @@
 import { BlogPosts } from "app/components/posts";
-import { getBlogPosts } from "app/blog/utils";
+import { getBlogPostsMetadata } from "app/blog/utils";
 
 export const metadata = {
   title: "Blog",
@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 export default function Page() {
-  let allBlogs = getBlogPosts();
+  let allBlogs = getBlogPostsMetadata();
 
   // Sort posts by date
   allBlogs.sort((a, b) => {
@@ -17,15 +17,9 @@ export default function Page() {
     return 1;
   });
 
-  // Remove content to reduce payload size
-  const postsWithoutContent = allBlogs.map((post) => ({
-    ...post,
-    content: "",
-  }));
-
   return (
     <section>
-      <BlogPosts posts={postsWithoutContent} />
+      <BlogPosts posts={allBlogs} />
     </section>
   );
 }
