@@ -44,7 +44,7 @@ export function Navbar() {
         />
         <div className="relative flex-1 min-w-0 h-full flex items-center mr-2 overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-3 z-10 bg-gradient-to-r from-white dark:from-black to-transparent pointer-events-none" />
-          <div className="flex flex-row items-center space-x-0 overflow-x-auto no-scrollbar w-full px-3">
+          <div className="flex flex-row items-center space-x-0 overflow-x-auto no-scrollbar w-full px-4">
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
                 <Link
@@ -55,7 +55,7 @@ export function Navbar() {
                       navigator.vibrate(15);
                     }
                   }}
-                  className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-1 md:px-2 m-0 active:scale-90 active:bg-neutral-200 dark:active:bg-neutral-800 whitespace-nowrap"
+                  className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-0 active:scale-90 active:bg-neutral-200 dark:active:bg-neutral-800 whitespace-nowrap"
                 >
                   {t(name)}
                 </Link>
