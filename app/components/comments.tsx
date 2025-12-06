@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLanguage } from "app/context/LanguageContext";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface Comment {
   id: number;
@@ -12,22 +13,39 @@ interface Comment {
 
 export function Comments({ slug }: { slug: string }) {
   const { language } = useLanguage();
-  const [comments, setComments] = useState<Comment[]>([]);
   const [username, setUsername] = useState("");
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    fetchComments();
-  }, [slug]);
+  const { data: comments = [], isLoading } = useQuery<Comment[]>({
+    queryKey: ["comments", slug],
+    queryFn: async () => {
+      const res = await fetch(`/api/comments?slug=${slug}`);
+      if (!res.ok) throw new Error("Failed to fetch");
+      return res.json();
+    },
+  });
 
-  const fetchComments = async () => {
-    const res = await fetch(`/api/comments?slug=${slug}`);
-    if (res.ok) {
-      const data = await res.json();
-      setComments(data);
-    }
-  };
+  const mutation = useMutation({
+    mutationFn: async (newComment: {
+      slug: string;
+      username: string;
+      content: string;
+    }) => {
+      const res = await fetch("/api/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newComment),
+      });
+      if (!res.ok) throw new Error("Failed to post");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["comments", slug] });
+      setUsername("");
+      setContent("");
+    },
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,24 +54,7 @@ export function Comments({ slug }: { slug: string }) {
     const submitUsername =
       username.trim() || (language === "zh" ? "匿名" : "Anonymous");
 
-    setLoading(true);
-    try {
-      const res = await fetch("/api/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, username: submitUsername, content }),
-      });
-
-      if (res.ok) {
-        setUsername("");
-        setContent("");
-        fetchComments();
-      }
-    } catch (error) {
-      console.error("Failed to submit comment", error);
-    } finally {
-      setLoading(false);
-    }
+    mutation.mutate({ slug, username: submitUsername, content });
   };
 
   return (
@@ -96,10 +97,10 @@ export function Comments({ slug }: { slug: string }) {
         </div>
         <button
           type="submit"
-          disabled={loading}
+          disabled={mutation.isPending}
           className="px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-md text-sm font-medium disabled:opacity-50 active:scale-95 transition-transform"
         >
-          {loading
+          {mutation.isPending
             ? language === "zh"
               ? "提交中..."
               : "Submitting..."
@@ -110,27 +111,35 @@ export function Comments({ slug }: { slug: string }) {
       </form>
 
       <div className="space-y-6">
-        {comments.map((comment) => (
-          <div key={comment.id} className="flex flex-col space-y-1">
-            <div className="flex items-center justify-between">
-              <span className="font-medium text-neutral-900 dark:text-neutral-100">
-                {comment.username}
-              </span>
-              <span className="text-xs text-neutral-500">
-                {new Date(comment.createdAt).toLocaleDateString()}
-              </span>
-            </div>
-            <p className="text-neutral-600 dark:text-neutral-400 text-sm">
-              {comment.content}
-            </p>
-          </div>
-        ))}
-        {comments.length === 0 && (
+        {isLoading ? (
           <p className="text-neutral-500 text-sm italic">
-            {language === "zh"
-              ? "暂无评论，来抢沙发吧！"
-              : "No comments yet. Be the first!"}
+            {language === "zh" ? "加载中..." : "Loading..."}
           </p>
+        ) : (
+          <>
+            {comments.map((comment) => (
+              <div key={comment.id} className="flex flex-col space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                    {comment.username}
+                  </span>
+                  <span className="text-xs text-neutral-500">
+                    {new Date(comment.createdAt).toLocaleDateString()}
+                  </span>
+                </div>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">
+                  {comment.content}
+                </p>
+              </div>
+            ))}
+            {comments.length === 0 && (
+              <p className="text-neutral-500 text-sm italic">
+                {language === "zh"
+                  ? "暂无评论，来抢沙发吧！"
+                  : "No comments yet. Be the first!"}
+              </p>
+            )}
+          </>
         )}
       </div>
     </div>

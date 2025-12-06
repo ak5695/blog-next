@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import { LanguageProvider } from "./context/LanguageContext";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -57,13 +58,15 @@ export default function RootLayout({
         <link rel="icon" href="/freedom.png" sizes="32x32" />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
-        <LanguageProvider>
-          <main className="flex-1 max-w-2xl mx-auto mt-20 flex flex-col px-4 w-full">
-            <Navbar />
-            {children}
-          </main>
-          <Footer />
-        </LanguageProvider>
+        <Providers>
+          <LanguageProvider>
+            <main className="flex-1 max-w-2xl mx-auto mt-20 flex flex-col px-4 w-full">
+              <Navbar />
+              {children}
+            </main>
+            <Footer />
+          </LanguageProvider>
+        </Providers>
         <Analytics debug={false} />
         <SpeedInsights debug={false} />
       </body>
