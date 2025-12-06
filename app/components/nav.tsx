@@ -14,6 +14,9 @@ const navItems = {
   "/product": {
     name: "nav.product",
   },
+  "/guestbook": {
+    name: "nav.guestbook",
+  },
   "/contact": {
     name: "nav.contact",
   },
@@ -28,12 +31,12 @@ export function Navbar() {
       style={{ height: "4rem" }}
     >
       <nav
-        className="flex justify-between items-center max-w-2xl h-full fade md:overflow-auto scroll-pr-6 mx-auto px-4"
+        className="flex justify-between items-center max-w-2xl h-full fade scroll-pr-6 mx-auto px-4"
         id="nav"
       >
-        <div className="flex flex-row items-center space-x-0">
+        <div className="flex flex-row items-center space-x-0 overflow-x-auto no-scrollbar">
           <Image
-            className="inline-block mr-4 cursor-pointer w-auto h-auto"
+            className="inline-block mr-4 cursor-pointer w-auto h-auto flex-shrink-0"
             src={"/freedom.png"}
             width={30}
             height={30}
@@ -45,7 +48,7 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-0 "
+                className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-0 active:scale-95 whitespace-nowrap"
               >
                 {t(name)}
               </Link>
@@ -54,7 +57,7 @@ export function Navbar() {
         </div>
         <button
           onClick={() => setLanguage(language === "zh" ? "en" : "zh")}
-          className="px-2 py-1 text-sm font-medium rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          className="flex-shrink-0 ml-2 px-2 py-1 text-sm font-medium rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
         >
           {language === "zh" ? "EN" : "中文"}
         </button>

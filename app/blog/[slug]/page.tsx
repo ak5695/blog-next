@@ -55,6 +55,7 @@ export function generateMetadata({ params }) {
 
 import { BlogTitle, BlogSummary } from "app/components/blog-title";
 import { BlogNavigation } from "app/components/blog-navigation";
+import { Comments } from "app/components/comments";
 
 export default function Blog({ params }) {
   const posts = getBlogPosts();
@@ -88,6 +89,7 @@ export default function Blog({ params }) {
       </article>
       {/* 上一篇/下一篇导航 */}
       <BlogNavigation prevPost={prevPost} nextPost={nextPost} />
+      <Comments slug={post.slug} />
 
       <script
         type="application/ld+json"

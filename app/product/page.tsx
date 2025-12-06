@@ -77,7 +77,7 @@ export default function Product() {
                 <a
                   href={product.url}
                   download
-                  className="inline-flex items-center px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                  className="inline-flex items-center px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors active:scale-95 transform"
                 >
                   <span className="mr-2">↓</span> {t("product.download")}
                 </a>
@@ -86,7 +86,7 @@ export default function Product() {
                   href={product.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                  className="inline-flex items-center px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors active:scale-95 transform"
                 >
                   <span className="mr-2">↗</span> {t("product.visit")}
                 </Link>

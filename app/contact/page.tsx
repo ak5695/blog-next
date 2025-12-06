@@ -22,9 +22,42 @@ export default function Page() {
             href="https://x.com/dufran_cn"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-blue-600 hover:underline inline-block active:scale-95 transition-transform"
           >
             dufran_cn
+          </Link>
+        </li>
+        <li className="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-4">
+          <span className="font-medium">{t("contact.github")}</span>
+          <Link
+            href="https://github.com/ak5695"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline inline-block active:scale-95 transition-transform"
+          >
+            杜弗兰
+          </Link>
+        </li>
+        <li className="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-4">
+          <span className="font-medium">{t("contact.xiaohongshu")}</span>
+          <Link
+            href="https://www.xiaohongshu.com/user/profile/5d33009000000000110004a1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline inline-block active:scale-95 transition-transform"
+          >
+            杜弗兰 软硬件分享
+          </Link>
+        </li>
+        <li className="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-4">
+          <span className="font-medium">{t("contact.bilibili")}</span>
+          <Link
+            href="https://space.bilibili.com/176023323"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline inline-block active:scale-95 transition-transform"
+          >
+            杜弗兰
           </Link>
         </li>
         <li className="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-4">
@@ -71,7 +104,7 @@ export default function Page() {
             priority
           ></Image>
         </li>
-        <li className="flex justify-between items-start pb-4">
+        <li className="flex justify-between items-start border-b border-neutral-100 dark:border-neutral-800 pb-4">
           <span className="font-medium pt-2">{t("contact.official")}</span>
           <Image
             className="rounded-lg shadow-sm w-auto h-auto"
@@ -79,6 +112,17 @@ export default function Page() {
             width={120}
             height={120}
             alt="Official Account QR Code"
+            priority
+          ></Image>
+        </li>
+        <li className="flex justify-between items-start pb-4">
+          <span className="font-medium pt-2">{t("contact.whatsapp")}</span>
+          <Image
+            className="rounded-lg shadow-sm w-auto h-auto"
+            src="/whatsapp.jpg"
+            width={120}
+            height={120}
+            alt="WhatsApp QR Code"
             priority
           ></Image>
         </li>
