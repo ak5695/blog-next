@@ -35,7 +35,7 @@ export function Navbar() {
         id="nav"
       >
         <Image
-          className="inline-block mr-4 cursor-pointer w-auto h-auto flex-shrink-0 invert dark:invert-0"
+          className="inline-block mr-2 cursor-pointer w-auto h-auto flex-shrink-0 invert dark:invert-0"
           src={"/freedom.png"}
           width={30}
           height={30}
@@ -43,8 +43,8 @@ export function Navbar() {
           priority
         />
         <div className="relative flex-1 min-w-0 h-full flex items-center mr-2 overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-6 z-10 bg-gradient-to-r from-white dark:from-black to-transparent pointer-events-none" />
-          <div className="flex flex-row items-center space-x-0 overflow-x-auto no-scrollbar w-full px-6">
+          <div className="absolute left-0 top-0 bottom-0 w-3 z-10 bg-gradient-to-r from-white dark:from-black to-transparent pointer-events-none" />
+          <div className="flex flex-row items-center space-x-0 overflow-x-auto no-scrollbar w-full px-3">
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
                 <Link
@@ -52,26 +52,26 @@ export function Navbar() {
                   href={path}
                   onClick={() => {
                     if (typeof navigator !== "undefined" && navigator.vibrate) {
-                      navigator.vibrate(10);
+                      navigator.vibrate(15);
                     }
                   }}
-                  className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-0 active:scale-90 whitespace-nowrap"
+                  className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-1 md:px-2 m-0 active:scale-90 active:bg-neutral-200 dark:active:bg-neutral-800 whitespace-nowrap"
                 >
                   {t(name)}
                 </Link>
               );
             })}
           </div>
-          <div className="absolute right-0 top-0 bottom-0 w-8 z-10 bg-gradient-to-l from-white dark:from-black to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-3 z-10 bg-gradient-to-l from-white dark:from-black to-transparent pointer-events-none" />
         </div>
         <button
           onClick={() => {
             setLanguage(language === "zh" ? "en" : "zh");
             if (typeof navigator !== "undefined" && navigator.vibrate) {
-              navigator.vibrate(10);
+              navigator.vibrate(15);
             }
           }}
-          className="flex-shrink-0 px-2 py-1 text-sm font-medium rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all active:scale-90"
+          className="flex-shrink-0 px-2 py-1 text-sm font-medium rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all active:scale-90 active:bg-neutral-200 dark:active:bg-neutral-700"
         >
           {language === "zh" ? "EN" : "中文"}
         </button>

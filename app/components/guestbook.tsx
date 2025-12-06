@@ -89,10 +89,10 @@ export function Guestbook() {
           disabled={mutation.isPending}
           onClick={() => {
             if (navigator.vibrate) {
-              navigator.vibrate(10);
+              navigator.vibrate(15);
             }
           }}
-          className="w-full px-6 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-md text-sm font-medium disabled:opacity-50 active:scale-90 transition-transform whitespace-nowrap"
+          className="w-full px-6 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-md text-sm font-medium disabled:opacity-50 active:scale-90 active:bg-neutral-700 dark:active:bg-neutral-300 transition-transform whitespace-nowrap"
         >
           {mutation.isPending
             ? language === "zh"

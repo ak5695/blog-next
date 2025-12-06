@@ -28,14 +28,14 @@ function BlogPostsContent({ posts }: { posts: any[] }) {
 
   const handlePrev = () => {
     if (typeof navigator !== "undefined" && navigator.vibrate) {
-      navigator.vibrate(10);
+      navigator.vibrate(15);
     }
     updatePage(page - 1);
   };
 
   const handleNext = () => {
     if (typeof navigator !== "undefined" && navigator.vibrate) {
-      navigator.vibrate(10);
+      navigator.vibrate(15);
     }
     updatePage(page + 1);
   };
@@ -47,10 +47,10 @@ function BlogPostsContent({ posts }: { posts: any[] }) {
           key={post.slug}
           onClick={() => {
             if (typeof navigator !== "undefined" && navigator.vibrate) {
-              navigator.vibrate(10);
+              navigator.vibrate(15);
             }
           }}
-          className="flex flex-col space-y-1 mb-4 active:scale-[0.95] transition-transform"
+          className="flex flex-col space-y-1 mb-4 active:scale-[0.95] active:bg-neutral-100 dark:active:bg-neutral-900 rounded-md p-2 -mx-2 transition-all"
           href={`/blog/${post.slug}`}
         >
           <div className="w-full border-0 flex flex-col md:flex-row space-x-0 md:space-x-2 border-b-2 border-transparent hover:border-white ">
@@ -71,7 +71,7 @@ function BlogPostsContent({ posts }: { posts: any[] }) {
           {page > 1 ? (
             <button
               onClick={handlePrev}
-              className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all text-sm active:scale-90"
+              className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all text-sm active:scale-90 active:bg-neutral-300 dark:active:bg-neutral-600"
             >
               {language === "zh" ? "← 上一页" : "← Previous"}
             </button>
@@ -86,7 +86,7 @@ function BlogPostsContent({ posts }: { posts: any[] }) {
           {page < totalPages ? (
             <button
               onClick={handleNext}
-              className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all text-sm active:scale-90"
+              className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all text-sm active:scale-90 active:bg-neutral-300 dark:active:bg-neutral-600"
             >
               {language === "zh" ? "下一页 →" : "Next →"}
             </button>

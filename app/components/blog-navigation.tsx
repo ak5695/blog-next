@@ -31,7 +31,7 @@ export function BlogNavigation({
       {prevPost ? (
         <Link
           href={`/blog/${prevPost.slug}`}
-          onClick={() => navigator.vibrate?.(10)}
+          onClick={() => navigator.vibrate?.(15)}
           className="flex flex-col text-left hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
         >
           <span className="text-neutral-500 dark:text-neutral-400 text-sm mb-1">
@@ -45,7 +45,7 @@ export function BlogNavigation({
       {nextPost ? (
         <Link
           href={`/blog/${nextPost.slug}`}
-          onClick={() => navigator.vibrate?.(10)}
+          onClick={() => navigator.vibrate?.(15)}
           className="flex flex-col text-right hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
         >
           <span className="text-neutral-500 dark:text-neutral-400 text-sm mb-1">

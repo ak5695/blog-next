@@ -11,7 +11,7 @@ export function BackButton() {
     <button
       onClick={() => {
         if (navigator.vibrate) {
-          navigator.vibrate(10);
+          navigator.vibrate(15);
         }
         router.back();
       }}
