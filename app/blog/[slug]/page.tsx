@@ -56,6 +56,8 @@ export function generateMetadata({ params }) {
 import { BlogTitle, BlogSummary } from "app/components/blog-title";
 import { BlogNavigation } from "app/components/blog-navigation";
 import { Comments } from "app/components/comments";
+import { BackButton } from "app/components/back-button";
+import { FloatingBackButton } from "app/components/floating-back-button";
 
 export default function Blog({ params }) {
   const posts = getBlogPosts();
@@ -71,6 +73,8 @@ export default function Blog({ params }) {
 
   return (
     <section>
+      <BackButton />
+      <FloatingBackButton />
       <BlogTitle
         title={post.metadata.title}
         title_zh={post.metadata.title_zh}

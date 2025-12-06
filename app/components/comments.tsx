@@ -98,7 +98,8 @@ export function Comments({ slug }: { slug: string }) {
         <button
           type="submit"
           disabled={mutation.isPending}
-          className="px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-md text-sm font-medium disabled:opacity-50 active:scale-95 transition-transform"
+          onClick={() => navigator.vibrate?.(10)}
+          className="px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-md text-sm font-medium disabled:opacity-50 active:scale-90 transition-transform"
         >
           {mutation.isPending
             ? language === "zh"
