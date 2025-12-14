@@ -5,47 +5,49 @@ import { useLanguage } from "../context/LanguageContext";
 
 interface Product {
   name: string;
-  url: string;
+  url?: string;
+  downloadUrl?: string;
   date: string;
   descriptionKey: string;
-  type: "link" | "download";
 }
 
 const products: Product[] = [
   {
+    name: "StarEchoes星际回响",
+    url: "https://earthechoes.dufran.cn/",
+    downloadUrl: "/starechoes_1.3.apk",
+    date: "2025.12",
+    descriptionKey: "product.desc.starsechoes",
+  },
+  {
     name: "Starty 浏览器首页插件",
-    url: "/20251202_Starty.zip",
+    downloadUrl: "/20251202_Starty.zip",
     date: "2025.12",
     descriptionKey: "product.desc.starty",
-    type: "download",
   },
   {
     name: "安考宝典",
     url: "https://c3.dufran.cn",
     date: "2025.11",
     descriptionKey: "product.desc.c3",
-    type: "link",
   },
   {
     name: "知富筛选",
     url: "https://www.zhifushaixuan.help/",
     date: "2025.11",
     descriptionKey: "product.desc.zhifu",
-    type: "link",
   },
   {
     name: "Aristotle.AI",
     url: "https://www.aristotle.dufran.cn",
     date: "2025.09",
     descriptionKey: "product.desc.aristotle",
-    type: "link",
   },
   {
     name: "CSS 圆角设计工具",
     url: "https://www.corner-design.work",
     date: "2025.08",
     descriptionKey: "product.desc.css",
-    type: "link",
   },
 ];
 
@@ -72,16 +74,17 @@ export default function Product() {
             <p className="text-neutral-600 dark:text-neutral-400 text-base mb-0 leading-relaxed">
               {t(product.descriptionKey)}
             </p>
-            <div className="mt-auto pt-2">
-              {product.type === "download" ? (
+            <div className="mt-auto pt-2 flex flex-wrap gap-2">
+              {product.downloadUrl && (
                 <a
-                  href={product.url}
+                  href={product.downloadUrl}
                   download
                   className="inline-flex items-center px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-sm font-medium text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors active:scale-95 transform"
                 >
                   <span className="mr-2">↓</span> {t("product.download")}
                 </a>
-              ) : (
+              )}
+              {product.url && (
                 <Link
                   href={product.url}
                   target="_blank"
