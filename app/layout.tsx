@@ -14,17 +14,28 @@ import NextTopLoader from "nextjs-toploader";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Seek Freedom",
-    template: "",
+    default: "Dufran's Blog | Tech, AI & Indie Development",
+    template: "%s | Dufran's Blog",
   },
-  description: "This is my portfolio.",
+  description: "Exploring the intersection of AI, technology, and indie development. Thoughts on building products, personal growth, and navigating the future of work.",
+  keywords: ["AI", "indie developer", "technology", "blog", "personal growth", "productivity", "Dufran"],
+  authors: [{ name: "Dufran", url: baseUrl }],
+  creator: "Dufran",
+  publisher: "Dufran",
   openGraph: {
-    title: "My Portfolio",
-    description: "I'm Dufran,This is my portfolio.",
+    title: "Dufran's Blog | Tech, AI & Indie Development",
+    description: "Exploring the intersection of AI, technology, and indie development. Thoughts on building products, personal growth, and navigating the future.",
     url: baseUrl,
-    siteName: "I'm Dufran",
-    locale: "en_US",
+    siteName: "Dufran's Blog",
+    locale: "zh_CN",
+    alternateLocale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dufran's Blog",
+    description: "Tech, AI & Indie Development insights",
+    creator: "@dufran",
   },
   robots: {
     index: true,
@@ -35,6 +46,12 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: baseUrl,
+    types: {
+      'application/rss+xml': `${baseUrl}/rss`,
     },
   },
 };
