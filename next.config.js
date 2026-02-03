@@ -18,14 +18,16 @@ const nextConfig = {
         removeConsole: process.env.NODE_ENV === 'production', // 生产环境移除 console
     },
 
-    // 5. 实验性功能 - 代码分割优化
+    // 5. 实验性功能 - 代码分割与 CSS 优化
     experimental: {
         // 更激进的代码分割
         optimizePackageImports: [
             '@tanstack/react-query',
-            'react-syntax-highlighter',
             'next-mdx-remote',
+            'geist',
         ],
+        // 自动内联关键 CSS (需要 critters)
+        optimizeCss: true,
     },
 
     // 6. 静态资源缓存头（极限缓存策略）

@@ -41,7 +41,7 @@ function readMDXMetadata(filePath) {
   const fd = fs.openSync(filePath, "r");
   try {
     const buffer = Buffer.alloc(2048); // Read 2KB
-    const bytesRead = fs.readSync(fd, buffer, 0, 2048, 0);
+    const bytesRead = fs.readSync(fd, buffer as any, 0, 2048, 0);
     const content = buffer.toString("utf-8", 0, bytesRead);
     const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
     const match = frontmatterRegex.exec(content);
@@ -97,10 +97,12 @@ function getMDXMetadata(dir) {
   });
 }
 
-export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "app", "blog", "posts"));
-}
+import { cache } from "react";
 
-export function getBlogPostsMetadata() {
+export const getBlogPosts = cache(() => {
+  return getMDXData(path.join(process.cwd(), "app", "blog", "posts"));
+});
+
+export const getBlogPostsMetadata = cache(() => {
   return getMDXMetadata(path.join(process.cwd(), "app", "blog", "posts"));
-}
+});

@@ -74,6 +74,8 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/freedom.png" sizes="32x32" />
+        <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
         <NextTopLoader

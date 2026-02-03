@@ -54,11 +54,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+import dynamic from "next/dynamic";
 import { BlogTitle, BlogSummary } from "app/components/blog-title";
 import { BlogNavigation } from "app/components/blog-navigation";
-import { Comments } from "app/components/comments";
 import { BackButton } from "app/components/back-button";
-import { FloatingBackButton } from "app/components/floating-back-button";
+
+const Comments = dynamic(() => import("app/components/comments").then(mod => mod.Comments), {
+  loading: () => <div className="mt-12 pt-8 animate-pulse bg-neutral-100 dark:bg-neutral-900 h-40 rounded-md" />
+});
+
+const FloatingBackButton = dynamic(() => import("app/components/floating-back-button").then(mod => mod.FloatingBackButton));
 
 export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
