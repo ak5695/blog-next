@@ -13,6 +13,12 @@ interface Product {
 
 const products: Product[] = [
   {
+    name: "Rhizo (AI Notion)",
+    url: "https://rhizo.dufran.cn",
+    date: "2026.01",
+    descriptionKey: "product.desc.rhizo",
+  },
+  {
     name: "AI Coding Flow",
     url: "https://ai-coding-flow.com",
     date: "2026.01",
