@@ -13,8 +13,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  let post = getBlogPosts().find((post) => post.slug === slug);
   if (!post) {
     return;
   }
@@ -59,9 +60,10 @@ import { Comments } from "app/components/comments";
 import { BackButton } from "app/components/back-button";
 import { FloatingBackButton } from "app/components/floating-back-button";
 
-export default function Blog({ params }) {
+export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const posts = getBlogPosts();
-  const currentIndex = posts.findIndex((p) => p.slug === params.slug);
+  const currentIndex = posts.findIndex((p) => p.slug === slug);
   const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
   const nextPost =
     currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
