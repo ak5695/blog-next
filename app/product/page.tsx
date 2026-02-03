@@ -13,6 +13,12 @@ interface Product {
 
 const products: Product[] = [
   {
+    name: "AI Coding Flow",
+    url: "https://ai-coding-flow.com",
+    date: "2026.01",
+    descriptionKey: "product.desc.aicodingflow",
+  },
+  {
     name: "StarEchoes星际回响",
     url: "https://earthechoes.dufran.cn/",
     downloadUrl: "/starechoes_1.3.apk",
