@@ -1,4 +1,4 @@
-import { Guestbook } from "app/components/guestbook";
+import { GuestbookTerminal } from "./components/GuestbookTerminal";
 
 export const metadata = {
   title: "Guestbook",
@@ -6,9 +6,5 @@ export const metadata = {
 };
 
 export default function GuestbookPage() {
-  return (
-    <section>
-      <Guestbook />
-    </section>
-  );
+  return <GuestbookTerminal />;
 }

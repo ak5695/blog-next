@@ -1,5 +1,5 @@
-import { BlogPosts } from "app/components/posts";
 import { getBlogPostsMetadata } from "app/blog/utils";
+import { BlogTerminal } from "./components/BlogTerminal";
 
 export const metadata = {
   title: "Blog",
@@ -17,9 +17,5 @@ export default function Page() {
     return 1;
   });
 
-  return (
-    <section>
-      <BlogPosts posts={allBlogs} />
-    </section>
-  );
+  return <BlogTerminal posts={allBlogs} />;
 }

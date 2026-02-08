@@ -1,81 +1,139 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "../context/LanguageContext";
-
-const navItems = {
-  "/": {
-    name: "nav.home",
-  },
-  "/blog": {
-    name: "nav.blog",
-  },
-  "/product": {
-    name: "nav.product",
-  },
-  "/guestbook": {
-    name: "nav.guestbook",
-  },
-  "/contact": {
-    name: "nav.contact",
-  },
-};
+import { GlitchText } from "./ui/GlitchText";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export function Navbar() {
   const { language, setLanguage, t } = useLanguage();
+  const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Standardized Route Map matches LanguageContext keys
+  const navItems = [
+    { path: "/", labelKey: "nav.home" },
+    { path: "/blog", labelKey: "nav.blog" },
+    { path: "/product", labelKey: "nav.product" },
+    { path: "/guestbook", labelKey: "nav.guestbook" },
+    { path: "/about", labelKey: "nav.about" }, // Ensure key exists or define fallback
+    { path: "/contact", labelKey: "nav.contact" },
+  ];
 
   return (
-    <header
-      className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm tracking-tight border-b border-neutral-200 dark:border-neutral-800"
+    <motion.header
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-neutral-800 group/nav"
       style={{ height: "4rem" }}
     >
-      <nav
-        className="flex justify-between items-center max-w-2xl h-full fade scroll-pr-6 mx-auto px-4"
-        id="nav"
-      >
-        <Image
-          className="inline-block mr-2 cursor-pointer w-auto h-auto flex-shrink-0 invert dark:invert-0"
-          src={"/freedom.png"}
-          width={30}
-          height={30}
-          alt="freedom"
-          priority
-        />
-        <div className="relative flex-1 min-w-0 h-full flex items-center mr-2 overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-3 z-10 bg-gradient-to-r from-white dark:from-black to-transparent pointer-events-none" />
-          <div className="flex flex-row items-center space-x-0 overflow-x-auto no-scrollbar w-full px-4">
-            {Object.entries(navItems).map(([path, { name }]) => {
+      <nav suppressHydrationWarning className="flex justify-between items-center max-w-5xl h-full mx-auto px-4 md:px-6 relative">
+
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-2 group z-50">
+          <div className="w-8 h-8 relative overflow-hidden bg-white text-black font-black flex items-center justify-center text-xl">
+            <span className="group-hover:animate-spin">D</span>
+          </div>
+          <span className="font-mono text-lg font-bold tracking-tighter text-white hidden sm:block">
+            <GlitchText text="DUFRAN.CN" />
+          </span>
+        </Link>
+
+        {/* DESKTOP LINKS */}
+        <div className="hidden md:flex flex-row items-center space-x-1">
+          {navItems.map(({ path, labelKey }) => {
+            const isActive = pathname === path || (path !== "/" && pathname.startsWith(path));
+            // Allow simple fallback if translation key missing (e.g. nav.about might need adding to context)
+            const label = t(labelKey) === labelKey && labelKey === "nav.about" ? "About" : t(labelKey);
+
+            return (
+              <Link
+                key={path}
+                href={path}
+                className={`relative px-3 py-2 font-mono font-bold text-xs uppercase tracking-widest transition-colors
+                    ${isActive
+                    ? "text-white bg-neutral-900/80"
+                    : "text-neutral-500 hover:text-white hover:bg-neutral-900/50"
+                  }
+                  `}
+              >
+                {/* Corner Targeting Brackets for Active Item */}
+                {isActive && (
+                  <>
+                    <div className="absolute top-0 left-0 w-2 h-2 pointer-events-none">
+                      <div className="absolute top-0 left-0 w-full h-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                      <div className="absolute top-0 left-0 h-full w-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                    </div>
+                    <div className="absolute top-0 right-0 w-2 h-2 pointer-events-none">
+                      <div className="absolute top-0 right-0 w-full h-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                      <div className="absolute top-0 right-0 h-full w-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 w-2 h-2 pointer-events-none">
+                      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                      <div className="absolute bottom-0 left-0 h-full w-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                    </div>
+                    <div className="absolute bottom-0 right-0 w-2 h-2 pointer-events-none">
+                      <div className="absolute bottom-0 right-0 w-full h-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                      <div className="absolute bottom-0 right-0 h-full w-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
+                    </div>
+                  </>
+                )}
+                <span suppressHydrationWarning>{label}</span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* RIGHT ACTIONS */}
+        <div className="flex items-center gap-4 z-50">
+          {/* LANG TOGGLE */}
+          <button
+            onClick={() => setLanguage(language === "zh" ? "en" : "zh")}
+            className="px-2 py-1 text-[10px] font-mono font-bold text-neutral-400 border border-neutral-800 hover:border-neutral-500 hover:text-white transition-all bg-black uppercase"
+          >
+            <span suppressHydrationWarning>[ {language === "zh" ? "CN" : "EN"} ]</span>
+          </button>
+
+          {/* MOBILE MENU TOGGLE */}
+          <div className="md:hidden ml-4">
+            <button
+              className="text-white"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+
+        {/* MOBILE MENU OVERLAY */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="absolute top-[4rem] left-0 w-full h-[calc(100vh-4rem)] bg-black/95 border-b border-neutral-800 p-6 flex flex-col gap-4 md:hidden shadow-2xl overflow-y-auto"
+          >
+            {navItems.map(({ path, labelKey }) => {
+              const label = t(labelKey) === labelKey && labelKey === "nav.about" ? (language === "zh" ? "关于" : "About") : t(labelKey);
               return (
                 <Link
                   key={path}
                   href={path}
-                  onClick={() => {
-                    if (typeof navigator !== "undefined" && navigator.vibrate) {
-                      navigator.vibrate(15);
-                    }
-                  }}
-                  className="transition-all text-center hover:text-neutral-800 border-2 border-transparent rounded-xl hover:border-white hover:rounded-xl dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-0 active:scale-90 active:bg-neutral-200 dark:active:bg-neutral-800 whitespace-nowrap"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block w-full py-4 text-xl font-mono text-neutral-300 hover:text-[rgb(255,82,87)] border-l-2 border-transparent hover:border-[rgb(255,82,87)] pl-6 transition-all bg-neutral-900/0 hover:bg-neutral-900/50"
+                  suppressHydrationWarning
                 >
-                  {t(name)}
+                  {label}
                 </Link>
-              );
+              )
             })}
-          </div>
-          <div className="absolute right-0 top-0 bottom-0 w-3 z-10 bg-gradient-to-l from-white dark:from-black to-transparent pointer-events-none" />
-        </div>
-        <button
-          onClick={() => {
-            setLanguage(language === "zh" ? "en" : "zh");
-            if (typeof navigator !== "undefined" && navigator.vibrate) {
-              navigator.vibrate(15);
-            }
-          }}
-          className="flex-shrink-0 px-2 py-1 text-sm font-medium rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all active:scale-90 active:bg-neutral-200 dark:active:bg-neutral-700"
-        >
-          {language === "zh" ? "EN" : "中文"}
-        </button>
+          </motion.div>
+        )}
+
       </nav>
-    </header>
+    </motion.header>
   );
 }
+// Force revalidation

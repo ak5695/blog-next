@@ -4,6 +4,12 @@ import { CustomMDX } from "app/components/mdx";
 import { getBlogPosts } from "app/blog/utils";
 import { formatDate } from "app/blog/date";
 import { baseUrl } from "app/sitemap";
+import dynamic from "next/dynamic";
+import { BlogTitle, BlogSummary } from "app/components/blog-title";
+import { BlogNavigation } from "app/components/blog-navigation";
+import { TerminalBlock } from "app/components/ui/TerminalBlock";
+
+export const revalidate = 604800 // Revalidate every week
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -54,16 +60,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-import dynamic from "next/dynamic";
-import { BlogTitle, BlogSummary } from "app/components/blog-title";
-import { BlogNavigation } from "app/components/blog-navigation";
-import { BackButton } from "app/components/back-button";
-
 const Comments = dynamic(() => import("app/components/comments").then(mod => mod.Comments), {
-  loading: () => <div className="mt-12 pt-8 animate-pulse bg-neutral-100 dark:bg-neutral-900 h-40 rounded-md" />
+  loading: () => <div className="mt-12 pt-8 animate-pulse bg-neutral-900 h-40 rounded-md" />
 });
-
-const FloatingBackButton = dynamic(() => import("app/components/floating-back-button").then(mod => mod.FloatingBackButton));
 
 export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -79,28 +78,56 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <section>
-      <BackButton />
-      <FloatingBackButton />
-      <BlogTitle
-        title={post.metadata.title}
-        title_zh={post.metadata.title_zh}
-      />
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
-        </p>
+    <section className="py-8 md:py-20 max-w-5xl mx-auto px-0 md:px-8">
+
+      {/* Breadcrumb / CLI Path */}
+      <div className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs text-neutral-500">
+        <Link href="/blog" className="hover:text-[rgb(255,82,87)] transition-colors">~/blog</Link>
+        <span>/</span>
+        <span className="text-neutral-300 break-all">{post.slug}.md</span>
       </div>
-      <BlogSummary
-        summary={post.metadata.summary}
-        summary_zh={post.metadata.summary_zh}
-      />
-      <article className="prose">
-        <CustomMDX source={post.content} />
-      </article>
-      {/* 上一篇/下一篇导航 */}
-      <BlogNavigation prevPost={prevPost} nextPost={nextPost} />
-      <Comments slug={post.slug} />
+
+      <TerminalBlock
+        title={`${post.slug}.md`}
+        tabs={[`${post.slug}.md`]}
+        activeTab={`${post.slug}.md`}
+        className="w-full bg-black/95 backdrop-blur-3xl border-neutral-800 shadow-2xl relative overflow-hidden"
+      >
+        {/* Reader Content - Ensuring high contrast and readability */}
+        {/* ADDED: prose-invert (mandatory for dark mode), prose-lg (larger text), and explicit text colors */}
+        <div className="md:p-8">
+          <div className="border-b border-neutral-800 pb-8 mb-8">
+            <h1 className="text-2xl md:text-5xl font-bold tracking-tight text-white mb-4 break-words">
+              {post.metadata.title}
+            </h1>
+
+            <div className="flex flex-col md:flex-row justify-between md:items-center text-xs font-mono text-neutral-500 uppercase tracking-widest gap-2">
+              <span>AUTHOR: DUFRAN</span>
+              <span>PUBLISHED: {formatDate(post.metadata.publishedAt)}</span>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <BlogSummary
+              summary={post.metadata.summary}
+              summary_zh={post.metadata.summary_zh} // Dual language support
+            />
+          </div>
+
+          <article className="prose prose-invert prose-neutral prose-lg md:prose-xl max-w-none text-neutral-300 leading-loose md:leading-[2.8] tracking-wide md:tracking-widest prose-headings:text-white prose-headings:font-bold prose-headings:mb-4 md:prose-headings:mb-10 prose-p:text-neutral-300 prose-p:my-6 md:prose-p:my-12 prose-li:my-4 md:prose-li:my-6 prose-a:text-[rgb(255,82,87)] hover:prose-a:text-[rgb(255,120,120)] prose-code:text-[rgb(255,120,120)] prose-pre:bg-neutral-900 prose-pre:border prose-pre:border-neutral-800 font-sans break-words">
+            <CustomMDX source={post.content} />
+          </article>
+        </div>
+
+        {/* Navigation Footer */}
+        <div className="mt-0 p-4 md:p-8 border-t border-dashed border-neutral-800 bg-neutral-900/30">
+          <BlogNavigation prevPost={prevPost} nextPost={nextPost} />
+          <div className="mt-8">
+            <Comments slug={post.slug} />
+          </div>
+        </div>
+
+      </TerminalBlock>
 
       <script
         type="application/ld+json"
@@ -119,7 +146,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               "@type": "Person",
-              name: "My Portfolio",
+              name: "Dufran",
             },
           }),
         }}
@@ -127,3 +154,4 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     </section>
   );
 }
+// Force revalidation for layout changes

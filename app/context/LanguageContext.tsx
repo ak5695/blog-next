@@ -66,6 +66,14 @@ export const translations = {
 而我所能做的，就是不断追求以高规格的姿态面对自身的存在，
 
 感知它，滋养它，并肩同行，骑士般迎向死亡的永夜。`,
+    "home.hero.title": "杜弗兰",
+    "home.hero.subtitle": "独立开发者 & AI 产品人",
+    "home.hero.desc": "以 AI 为基石，构建产品与服务，探索超级个体的自由之路。",
+    "home.cmd.blog": "阅读最新思考",
+    "home.cmd.product": "查看作品清单",
+    "home.cmd.about": "身份与哲学",
+    "home.cmd.guestbook": "留言",
+    "home.cmd.contact": "建立联系",
   },
   en: {
     "nav.home": "Home",
@@ -121,6 +129,14 @@ And so all I can do
 is keep trying to face my own existence with dignity,
 to feel it, nourish it, walk with it—
 and ride like a knight into the endless night of death.`,
+    "home.hero.title": "DUFRAN",
+    "home.hero.subtitle": "Indie Developer & AI Product Builder",
+    "home.hero.desc": "Building products and services with AI, exploring the path to freedom as a Super Individual.",
+    "home.cmd.blog": "Read latest thoughts",
+    "home.cmd.product": "View built artifacts",
+    "home.cmd.about": "Identity & philosophy",
+    "home.cmd.guestbook": "Sign the guestbook",
+    "home.cmd.contact": "Establish link",
   },
 };
 

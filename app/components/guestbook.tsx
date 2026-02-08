@@ -69,7 +69,7 @@ export function Guestbook() {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500"
+          className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500 text-base md:text-sm"
           placeholder={
             language === "zh" ? "你的名字 (可选)" : "Your name (optional)"
           }
@@ -77,7 +77,7 @@ export function Guestbook() {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500"
+          className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500 text-base md:text-sm"
           rows={3}
           placeholder={
             language === "zh" ? "写下你的留言..." : "Leave a message..."
@@ -99,8 +99,8 @@ export function Guestbook() {
               ? "提交中..."
               : "Submitting..."
             : language === "zh"
-            ? "签写留言"
-            : "Sign Guestbook"}
+              ? "签写留言"
+              : "Sign Guestbook"}
         </button>
       </form>
 
