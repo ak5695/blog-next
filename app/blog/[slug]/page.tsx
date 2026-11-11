@@ -78,7 +78,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <section className="py-8 md:py-20 max-w-5xl mx-auto px-0 md:px-8">
+    <section className="pt-4 pb-8 md:pt-0 md:pb-20 w-full min-w-0 max-w-5xl mx-auto px-0 md:px-8">
 
       {/* Breadcrumb / CLI Path */}
       <div className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs text-[var(--ink-medium)]">
