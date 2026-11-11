@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const Comments = dynamic(() => import("app/components/comments").then(mod => mod.Comments), {
-  loading: () => <div className="mt-12 pt-8 animate-pulse bg-neutral-900 h-40 rounded-md" />
+  loading: () => <div className="mt-12 pt-8 animate-pulse bg-[var(--surface-muted)] h-40 rounded-md" />
 });
 
 export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
@@ -81,27 +81,27 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     <section className="py-8 md:py-20 max-w-5xl mx-auto px-0 md:px-8">
 
       {/* Breadcrumb / CLI Path */}
-      <div className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs text-neutral-500">
-        <Link href="/blog" className="hover:text-[rgb(255,82,87)] transition-colors">~/blog</Link>
+      <div className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs text-[var(--ink-medium)]">
+        <Link href="/blog" className="hover:text-[var(--cli-accent)] transition-colors">~/blog</Link>
         <span>/</span>
-        <span className="text-neutral-600 dark:text-neutral-300 break-all">{post.slug}.md</span>
+        <span className="text-[var(--ink-medium)] break-all">{post.slug}.md</span>
       </div>
 
       <TerminalBlock
         title={`${post.slug}.md`}
         tabs={[`${post.slug}.md`]}
         activeTab={`${post.slug}.md`}
-        className="w-full bg-black/95 backdrop-blur-3xl border-neutral-800 shadow-2xl relative overflow-hidden"
+        className="w-full bg-[var(--surface)] backdrop-blur-3xl border-[var(--border)] shadow-2xl relative overflow-hidden"
       >
         {/* Reader Content - Ensuring high contrast and readability */}
         {/* ADDED: prose-invert (mandatory for dark mode), prose-lg (larger text), and explicit text colors */}
         <div className="md:p-8">
-          <div className="border-b border-neutral-800 pb-8 mb-8">
-            <h1 className="text-2xl md:text-5xl font-bold tracking-tight text-white mb-4 break-words">
+          <div className="border-b border-[var(--border)] pb-8 mb-8">
+            <h1 className="text-2xl md:text-5xl font-bold tracking-tight text-[var(--ink-black)] mb-4 break-words">
               {post.metadata.title}
             </h1>
 
-            <div className="flex flex-col md:flex-row justify-between md:items-center text-xs font-mono text-neutral-500 uppercase tracking-widest gap-2">
+            <div className="flex flex-col md:flex-row justify-between md:items-center text-xs font-mono text-[var(--ink-medium)] uppercase tracking-widest gap-2">
               <span>AUTHOR: DUFRAN</span>
               <span>PUBLISHED: {formatDate(post.metadata.publishedAt)}</span>
             </div>
@@ -114,13 +114,13 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             />
           </div>
 
-          <article className="prose prose-invert prose-neutral prose-lg md:prose-xl max-w-none text-neutral-300 leading-loose md:leading-[2.8] tracking-wide md:tracking-widest prose-headings:text-white prose-headings:font-bold prose-headings:mb-4 md:prose-headings:mb-10 prose-p:text-neutral-300 prose-p:my-6 md:prose-p:my-12 prose-li:my-4 md:prose-li:my-6 prose-a:text-[rgb(255,82,87)] hover:prose-a:text-[rgb(255,120,120)] prose-code:text-[rgb(255,120,120)] prose-pre:bg-neutral-900 prose-pre:border prose-pre:border-neutral-800 font-sans break-words">
+          <article className="prose prose-invert prose-neutral prose-lg md:prose-xl max-w-none text-[var(--ink-black)] leading-loose  tracking-wide  prose-headings:text-[var(--ink-black)] prose-headings:font-bold prose-headings:mb-4 md:prose-headings:mb-10 prose-p:text-[var(--ink-black)] prose-p:my-6 md:prose-p:my-6 prose-li:my-4 md:prose-li:my-6 prose-a:text-[var(--cli-accent)] hover:prose-a:text-[var(--cli-accent)] prose-code:text-[var(--cli-accent)] prose-pre:bg-[var(--surface-muted)] prose-pre:border prose-pre:border-[var(--border)] font-sans break-words">
             <CustomMDX source={post.content} />
           </article>
         </div>
 
         {/* Navigation Footer */}
-        <div className="mt-0 p-4 md:p-8 border-t border-dashed border-neutral-800 bg-neutral-900/30">
+        <div className="mt-0 p-4 md:p-8 border-t border-dashed border-[var(--border)] bg-[var(--surface-muted)]">
           <BlogNavigation prevPost={prevPost} nextPost={nextPost} />
           <div className="mt-8">
             <Comments slug={post.slug} />

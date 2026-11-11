@@ -16,21 +16,21 @@ export default function Page() {
       value: "ji569414123@gmail.com",
       href: "mailto:ji569414123@gmail.com",
       icon: Mail,
-      color: "text-neutral-200 border-neutral-500/30 hover:bg-neutral-500/10"
+      color: "text-[var(--ink-black)] border-[var(--border)] hover:bg-[var(--surface-muted)]"
     },
     {
       label: t("contact.x"),
       value: "@dufran_cn",
       href: "https://x.com/dufran_cn",
       icon: Twitter,
-      color: "text-neutral-200 border-neutral-500/30 hover:bg-neutral-500/10"
+      color: "text-[var(--ink-black)] border-[var(--border)] hover:bg-[var(--surface-muted)]"
     },
     {
       label: t("contact.github"),
       value: "@ak5695",
       href: "https://github.com/ak5695",
       icon: Github,
-      color: "text-neutral-300 border-neutral-500/30 hover:bg-neutral-500/10"
+      color: "text-[var(--ink-black)] border-[var(--border)] hover:bg-[var(--surface-muted)]"
     },
   ];
 
@@ -51,20 +51,20 @@ export default function Page() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8 font-mono text-sm text-neutral-500"
+        className="mb-8 font-mono text-sm text-[var(--ink-medium)]"
       >
-        <span className="text-[rgb(255,82,87)]">➜</span> ~ ./establish_connection.sh --all
+        <span className="text-[var(--cli-accent)]">➜</span> ~ ./establish_connection.sh --all
       </motion.div>
 
       <TerminalBlock
         title="signal_hub.log"
-        className="w-full bg-black/90 backdrop-blur-xl border-white/10"
+        className="w-full bg-[var(--surface)] backdrop-blur-xl border-[var(--border)]"
       >
         <div className="md:p-8 space-y-8 md:space-y-12">
 
           {/* 1. Primary Signal Cards */}
           <div>
-            <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-wider md:tracking-widest mb-4 md:mb-6 flex items-center gap-2">
+            <h3 className="text-xs font-mono text-[var(--ink-medium)] uppercase tracking-wider md:tracking-widest mb-4 md:mb-6 flex items-center gap-2">
               <Globe className="w-3 h-3" /> Direct Uplink
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -111,7 +111,7 @@ export default function Page() {
 
           {/* 2. Secondary Socials */}
           <div>
-            <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+            <h3 className="text-xs font-mono text-[var(--ink-medium)] uppercase tracking-widest mb-6 flex items-center gap-2">
               <MessageSquare className="w-3 h-3" /> Broadcast Channels
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -120,7 +120,7 @@ export default function Page() {
                   key={link.label}
                   href={link.href}
                   target="_blank"
-                  className="relative flex items-center gap-4 p-4 rounded bg-neutral-900/40 border border-white/10 hover:border-[rgb(255,82,87)]/50 hover:bg-neutral-900/80 transition-all group"
+                  className="relative flex items-center gap-4 p-4 rounded bg-[var(--surface-muted)] border border-[var(--border)] hover:border-[rgb(255,82,87)]/50 hover:bg-[var(--surface-muted)] transition-all group"
                 >
                   {/* Corner Targeting Brackets */}
                   <div className="absolute top-1 left-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
@@ -140,14 +140,14 @@ export default function Page() {
                     <div className="absolute bottom-0 right-0 h-full w-[2px] bg-[rgb(255,82,87)]" style={{ boxShadow: '0 0 6px rgb(255,82,87)' }}></div>
                   </div>
 
-                  <div className="p-2 bg-neutral-800 rounded text-neutral-400 group-hover:text-white group-hover:bg-[rgb(255,82,87)] transition-colors">
+                  <div className="p-2 bg-[var(--surface-muted)] rounded text-[var(--ink-medium)] group-hover:text-[var(--ink-black)] group-hover:bg-[rgb(255,82,87)] transition-colors">
                     <link.icon className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-bold text-neutral-300 group-hover:text-[rgb(255,82,87)] font-mono">{link.label}</div>
-                    <div className="text-xs text-neutral-600">{link.value}</div>
+                    <div className="text-sm font-bold text-[var(--ink-black)] group-hover:text-[var(--cli-accent)] font-mono">{link.label}</div>
+                    <div className="text-xs text-[var(--ink-medium)]">{link.value}</div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-neutral-600 group-hover:text-[rgb(255,82,87)]" />
+                  <ArrowUpRight className="w-4 h-4 text-[var(--ink-medium)] group-hover:text-[var(--cli-accent)]" />
                 </Link>
               ))}
             </div>
@@ -155,7 +155,7 @@ export default function Page() {
 
           {/* 3. Secure QR Grid */}
           <div>
-            <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+            <h3 className="text-xs font-mono text-[var(--ink-medium)] uppercase tracking-widest mb-6 flex items-center gap-2">
               <Monitor className="w-3 h-3" /> Encrypted Handshake (Scan)
             </h3>
             <div className="flex flex-wrap gap-6">
@@ -166,9 +166,9 @@ export default function Page() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + i * 0.1 }}
-                  className="flex flex-col items-center gap-3 p-3 bg-white rounded-lg border border-neutral-200 shadow-sm w-32 md:w-40 hover:shadow-lg transition-shadow"
+                  className="flex flex-col items-center gap-3 p-3 bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-sm w-32 md:w-40 hover:shadow-lg transition-shadow"
                 >
-                  <div className="relative w-full aspect-square bg-neutral-100 overflow-hidden">
+                  <div className="relative w-full aspect-square bg-[var(--surface-muted)] overflow-hidden">
                     <Image
                       src={qr.src}
                       alt={qr.label}
@@ -179,7 +179,7 @@ export default function Page() {
                     {/* Scanline effect over QR */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgb(255,82,87)]/10 to-transparent h-full w-full animate-scan" style={{ backgroundSize: "100% 200%" }} />
                   </div>
-                  <span className="text-xs font-bold text-neutral-900 font-mono text-center w-full border-t border-neutral-100 pt-2">{qr.label}</span>
+                  <span className="text-xs font-bold text-[var(--ink-black)] font-mono text-center w-full border-t border-[var(--border)] pt-2">{qr.label}</span>
                 </motion.div>
               ))}
             </div>

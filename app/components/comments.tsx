@@ -58,21 +58,21 @@ export function Comments({ slug }: { slug: string }) {
   };
 
   return (
-    <div className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+    <div className="mt-12 pt-8 border-t border-[var(--border)] ">
       <h2 className="text-xl font-semibold mb-6">
         {language === "zh" ? "评论" : "Comments"}
       </h2>
 
       <form onSubmit={handleSubmit} className="mb-8 space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-1 text-neutral-400">
+          <label className="block text-sm font-medium mb-1 text-[var(--ink-medium)]">
             {language === "zh" ? "昵称" : "Name"}
           </label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500"
+            className="w-full p-2 rounded-md border border-[var(--border)] bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500"
             placeholder={
               language === "zh"
                 ? "你的名字 (可选，默认为匿名)"
@@ -81,13 +81,13 @@ export function Comments({ slug }: { slug: string }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1 text-neutral-400">
+          <label className="block text-sm font-medium mb-1 text-[var(--ink-medium)]">
             {language === "zh" ? "内容" : "Comment"}
           </label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500"
+            className="w-full p-2 rounded-md border border-[var(--border)] bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500"
             rows={3}
             placeholder={
               language === "zh" ? "写下你的想法..." : "Write your thoughts..."
@@ -99,7 +99,7 @@ export function Comments({ slug }: { slug: string }) {
           type="submit"
           disabled={mutation.isPending}
           onClick={() => navigator.vibrate?.(15)}
-          className="px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-md text-sm font-medium disabled:opacity-50 active:scale-90 active:bg-neutral-700 dark:active:bg-neutral-300 transition-transform"
+          className="px-4 py-2 bg-[var(--surface-muted)] text-[var(--ink-black)] rounded-md text-sm font-medium disabled:opacity-50 active:scale-90 active:bg-[var(--surface-muted)] transition-transform"
         >
           {mutation.isPending
             ? language === "zh"
@@ -113,7 +113,7 @@ export function Comments({ slug }: { slug: string }) {
 
       <div className="space-y-6">
         {isLoading ? (
-          <p className="text-neutral-500 text-sm italic">
+          <p className="text-[var(--ink-medium)] text-sm italic">
             {language === "zh" ? "加载中..." : "Loading..."}
           </p>
         ) : (
@@ -121,20 +121,20 @@ export function Comments({ slug }: { slug: string }) {
             {comments.map((comment) => (
               <div key={comment.id} className="flex flex-col space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="font-medium text-neutral-100">
+                  <span className="font-medium text-[var(--ink-black)]">
                     {comment.username}
                   </span>
-                  <span className="text-xs text-neutral-500">
+                  <span className="text-xs text-[var(--ink-medium)]">
                     {new Date(comment.createdAt).toLocaleDateString()}
                   </span>
                 </div>
-                <p className="text-neutral-400 text-sm">
+                <p className="text-[var(--ink-medium)] text-sm">
                   {comment.content}
                 </p>
               </div>
             ))}
             {comments.length === 0 && (
-              <p className="text-neutral-500 text-sm italic">
+              <p className="text-[var(--ink-medium)] text-sm italic">
                 {language === "zh"
                   ? "暂无评论，来抢沙发吧！"
                   : "No comments yet. Be the first!"}

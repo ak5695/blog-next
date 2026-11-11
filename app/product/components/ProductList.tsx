@@ -100,23 +100,23 @@ export function ProductList() {
         <section className="min-h-[80vh] py-4 md:py-10 max-w-6xl mx-auto px-0 md:px-4 flex flex-col justify-start">
 
             {/* Introduction / Header */}
-            <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 border-b border-white/10 pb-8">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 border-b border-[var(--border)] pb-8">
                 <div>
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-4 font-mono text-sm text-neutral-500"
+                        className="mb-4 font-mono text-sm text-[var(--ink-medium)]"
                     >
-                        <span className="text-[rgb(255,82,87)]">➜</span> ~ ./inventory.sh --type=module
+                        <span className="text-[var(--cli-accent)]">➜</span> ~ ./inventory.sh --type=module
                     </motion.div>
-                    <h1 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white tracking-tighter">
+                    <h1 className="text-4xl md:text-5xl font-black text-[var(--ink-black)] tracking-tighter">
                         {t("product.title")}
                     </h1>
                 </div>
 
-                <div className="font-mono text-[10px] md:text-xs text-neutral-600 w-full md:w-auto mt-4 md:mt-0 flex justify-between md:block md:text-right border-t border-white/10 md:border-t-0 pt-2 md:pt-0">
+                <div className="font-mono text-[10px] md:text-xs text-[var(--ink-medium)] w-full md:w-auto mt-4 md:mt-0 flex justify-between md:block md:text-right border-t border-[var(--border)] md:border-t-0 pt-2 md:pt-0">
                     <div>TOTAL_MODULES: {products.length}</div>
-                    <div>STATUS: <span className="text-[rgb(255,82,87)]">OPTIMAL</span></div>
+                    <div>STATUS: <span className="text-[var(--cli-accent)]">OPTIMAL</span></div>
                 </div>
             </div>
 
@@ -132,7 +132,7 @@ export function ProductList() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
-                            className="group relative border border-white/10 bg-neutral-900 text-neutral-300 p-4 md:p-6 h-full flex flex-col justify-between hover:border-[rgb(255,83,88)]/50 hover:bg-neutral-800 transition-all duration-300"
+                            className="group relative border border-[var(--border)] bg-[var(--surface)] text-[var(--ink-black)] p-4 md:p-6 h-full flex flex-col justify-between hover:border-[rgb(255,83,88)]/50 hover:bg-[var(--surface-muted)] transition-all duration-300"
                         >
                             {/* Pixel Corner Brackets - 8-bit Style */}
                             <PixelCorners className="opacity-0 group-hover:opacity-100 transition-all duration-300" size="md" />
@@ -142,24 +142,24 @@ export function ProductList() {
 
                             <div className="relative z-10">
                                 <div className="flex justify-between items-start mb-6">
-                                    <div className="p-3 bg-neutral-800 rounded-lg group-hover:bg-[rgb(255,83,88)] group-hover:text-black transition-colors">
+                                    <div className="p-3 bg-[var(--surface-muted)] rounded-lg group-hover:bg-[rgb(255,83,88)] group-hover:text-[var(--ink-black)] transition-colors">
                                         <p.icon className="w-6 h-6" />
                                     </div>
-                                    <span className={`text-[10px] font-mono px-2 py-1 rounded border uppercase tracking-widest ${p.status === "LIVE" ? "border-[rgb(200,60,65)] text-[rgb(255,82,87)] bg-[rgb(60,20,22)]/10" : "border-yellow-800 text-yellow-500 bg-yellow-900/10"
+                                    <span className={`text-[10px] font-mono px-2 py-1 rounded border uppercase tracking-widest ${p.status === "LIVE" ? "border-[rgb(200,60,65)] text-[var(--cli-accent)] bg-[rgb(60,20,22)]/10" : "border-yellow-800 text-[var(--warning)] bg-yellow-900/10"
                                         }`}>
                                         [{p.status}]
                                     </span>
                                 </div>
 
-                                <h3 className="text-xl font-bold text-neutral-300 group-hover:text-white font-mono mb-2 transition-colors">
+                                <h3 className="text-xl font-bold text-[var(--ink-black)] group-hover:text-[var(--ink-black)] font-mono mb-2 transition-colors">
                                     {p.title}
                                 </h3>
 
-                                <span className="absolute top-0 right-0 text-[10px] text-neutral-600 font-mono">
+                                <span className="block mb-3 text-xs text-[var(--ink-medium)] font-mono">
                                     {p.date}
                                 </span>
 
-                                <p className="text-sm text-neutral-400 mb-6 leading-relaxed line-clamp-3">
+                                <p className="text-sm text-[var(--ink-medium)] mb-6 leading-relaxed line-clamp-3">
                                     {t(p.descKey)}
                                 </p>
                             </div>
@@ -167,13 +167,13 @@ export function ProductList() {
                             <div className="relative z-10">
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {p.tech.map(tag => (
-                                        <span key={tag} className="text-[10px] font-mono border border-white/10 text-neutral-500 px-2 py-1 rounded group-hover:border-[rgb(255,83,88)]/30 group-hover:text-[rgb(255,83,88)]/80 transition-colors">
+                                        <span key={tag} className="text-[10px] font-mono border border-[var(--border)] text-[var(--ink-medium)] px-2 py-1 rounded group-hover:border-[rgb(255,83,88)]/30 group-hover:text-[var(--cli-accent)] transition-colors">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
 
-                                <div className="flex items-center text-xs font-mono text-neutral-600 group-hover:text-[rgb(255,83,88)] transition-colors uppercase tracking-widest">
+                                <div className="flex items-center text-xs font-mono text-[var(--ink-medium)] group-hover:text-[var(--cli-accent)] transition-colors uppercase tracking-widest">
                                     {t("product.visit")} <ArrowRight className="w-3 h-3 ml-2 group-hover:translate-x-1 transition-transform" />
                                 </div>
                             </div>

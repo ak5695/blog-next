@@ -27,17 +27,17 @@ export function Navbar() {
     <motion.header
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-neutral-800 group/nav"
+      className="fixed top-0 left-0 w-full z-50 bg-[var(--surface)] backdrop-blur-md border-b border-[var(--border)] group/nav"
       style={{ height: "4rem" }}
     >
       <nav suppressHydrationWarning className="flex justify-between items-center max-w-5xl h-full mx-auto px-4 md:px-6 relative">
 
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-2 group z-50">
-          <div className="w-8 h-8 relative overflow-hidden bg-white text-black font-black flex items-center justify-center text-xl">
+          <div className="w-8 h-8 relative overflow-hidden bg-[var(--surface)] text-[var(--ink-black)] font-black flex items-center justify-center text-xl">
             <span className="group-hover:animate-spin">D</span>
           </div>
-          <span className="font-mono text-lg font-bold tracking-tighter text-white hidden sm:block">
+          <span className="font-mono text-lg font-bold tracking-tighter text-[var(--ink-black)] hidden sm:block">
             <GlitchText text="DUFRAN.CN" />
           </span>
         </Link>
@@ -55,8 +55,8 @@ export function Navbar() {
                 href={path}
                 className={`relative px-3 py-2 font-mono font-bold text-xs uppercase tracking-widest transition-colors
                     ${isActive
-                    ? "text-white bg-neutral-900/80"
-                    : "text-neutral-500 hover:text-white hover:bg-neutral-900/50"
+                    ? "text-[var(--ink-black)] bg-[var(--surface-muted)]"
+                    : "text-[var(--ink-medium)] hover:text-[var(--ink-black)] hover:bg-[var(--surface-muted)]"
                   }
                   `}
               >
@@ -92,7 +92,7 @@ export function Navbar() {
           {/* LANG TOGGLE */}
           <button
             onClick={() => setLanguage(language === "zh" ? "en" : "zh")}
-            className="px-2 py-1 text-[10px] font-mono font-bold text-neutral-400 border border-neutral-800 hover:border-neutral-500 hover:text-white transition-all bg-black uppercase"
+            className="px-2 py-1 text-[10px] font-mono font-bold text-[var(--ink-medium)] border border-[var(--border)] hover:border-[var(--border)] hover:text-[var(--ink-black)] transition-all bg-[var(--surface)] uppercase"
           >
             <span suppressHydrationWarning>[ {language === "zh" ? "CN" : "EN"} ]</span>
           </button>
@@ -100,7 +100,7 @@ export function Navbar() {
           {/* MOBILE MENU TOGGLE */}
           <div className="md:hidden ml-4">
             <button
-              className="text-white"
+              className="text-[var(--ink-black)]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X /> : <Menu />}
@@ -113,7 +113,7 @@ export function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute top-[4rem] left-0 w-full h-[calc(100vh-4rem)] bg-black/95 border-b border-neutral-800 p-6 flex flex-col gap-4 md:hidden shadow-2xl overflow-y-auto"
+            className="absolute top-[4rem] left-0 w-full h-[calc(100vh-4rem)] bg-[var(--surface)] border-b border-[var(--border)] p-6 flex flex-col gap-4 md:hidden shadow-2xl overflow-y-auto"
           >
             {navItems.map(({ path, labelKey }) => {
               const label = t(labelKey) === labelKey && labelKey === "nav.about" ? (language === "zh" ? "关于" : "About") : t(labelKey);
@@ -122,7 +122,7 @@ export function Navbar() {
                   key={path}
                   href={path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full py-4 text-xl font-mono text-neutral-300 hover:text-[rgb(255,82,87)] border-l-2 border-transparent hover:border-[rgb(255,82,87)] pl-6 transition-all bg-neutral-900/0 hover:bg-neutral-900/50"
+                  className="block w-full py-4 text-xl font-mono text-[var(--ink-black)] hover:text-[var(--cli-accent)] border-l-2 border-transparent hover:border-[rgb(255,82,87)] pl-6 transition-all bg-[var(--surface-muted)] hover:bg-[var(--surface-muted)]"
                   suppressHydrationWarning
                 >
                   {label}

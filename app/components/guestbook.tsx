@@ -69,7 +69,7 @@ export function Guestbook() {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500 text-base md:text-sm"
+          className="w-full p-2 rounded-md border border-[var(--border)] bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500 text-base md:text-sm"
           placeholder={
             language === "zh" ? "你的名字 (可选)" : "Your name (optional)"
           }
@@ -77,7 +77,7 @@ export function Guestbook() {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500 text-base md:text-sm"
+          className="w-full p-2 rounded-md border border-[var(--border)] bg-transparent focus:outline-none focus:ring-2 focus:ring-neutral-500 text-base md:text-sm"
           rows={3}
           placeholder={
             language === "zh" ? "写下你的留言..." : "Leave a message..."
@@ -92,7 +92,7 @@ export function Guestbook() {
               navigator.vibrate(15);
             }
           }}
-          className="w-full px-6 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black rounded-md text-sm font-medium disabled:opacity-50 active:scale-90 active:bg-neutral-700 dark:active:bg-neutral-300 transition-transform whitespace-nowrap"
+          className="w-full px-6 py-2 bg-[var(--surface-muted)] text-[var(--ink-black)] rounded-md text-sm font-medium disabled:opacity-50 active:scale-90 active:bg-[var(--surface-muted)] transition-transform whitespace-nowrap"
         >
           {mutation.isPending
             ? language === "zh"
@@ -106,7 +106,7 @@ export function Guestbook() {
 
       <div className="space-y-4">
         {isLoading ? (
-          <p className="text-neutral-500 text-sm italic text-center py-8">
+          <p className="text-[var(--ink-medium)] text-sm italic text-center py-8">
             {language === "zh" ? "加载中..." : "Loading..."}
           </p>
         ) : (
@@ -114,23 +114,23 @@ export function Guestbook() {
             {comments.map((comment) => (
               <div
                 key={comment.id}
-                className="flex flex-col p-4 border border-neutral-100 dark:border-neutral-800 rounded-lg bg-neutral-900/50"
+                className="flex flex-col p-4 border border-[var(--border)] rounded-lg bg-[var(--surface-muted)]"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium text-neutral-100 text-sm">
+                  <span className="font-medium text-[var(--ink-black)] text-sm">
                     {comment.username}
                   </span>
-                  <span className="text-xs text-neutral-500 font-mono">
+                  <span className="text-xs text-[var(--ink-medium)] font-mono">
                     {new Date(comment.createdAt).toLocaleDateString()}
                   </span>
                 </div>
-                <p className="text-neutral-400 text-sm leading-relaxed whitespace-pre-wrap">
+                <p className="text-[var(--ink-medium)] text-sm leading-relaxed whitespace-pre-wrap">
                   {comment.content}
                 </p>
               </div>
             ))}
             {comments.length === 0 && (
-              <p className="text-neutral-500 text-sm italic text-center py-8">
+              <p className="text-[var(--ink-medium)] text-sm italic text-center py-8">
                 {language === "zh"
                   ? "还没有留言，来写第一条吧！"
                   : "No messages yet. Be the first!"}

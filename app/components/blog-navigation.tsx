@@ -27,14 +27,14 @@ export function BlogNavigation({
   };
 
   return (
-    <div className="flex justify-between items-center my-12 pt-8 border-t border-neutral-200 dark:border-neutral-700">
+    <div className="flex justify-between items-center my-12 pt-8 border-t border-[var(--border)] ">
       {prevPost ? (
         <Link
           href={`/blog/${prevPost.slug}`}
           onClick={() => navigator.vibrate?.(15)}
-          className="flex flex-col text-left hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
+          className="flex flex-col text-left hover:text-[var(--ink-black)] transition-colors max-w-[45%] active:scale-90 transform"
         >
-          <span className="text-neutral-500 dark:text-neutral-400 text-sm mb-1">
+          <span className="text-[var(--ink-medium)] text-sm mb-1">
             ← {language === "zh" ? "上一篇" : "Previous"}
           </span>
           <span className="underline truncate">{getTitle(prevPost)}</span>
@@ -46,9 +46,9 @@ export function BlogNavigation({
         <Link
           href={`/blog/${nextPost.slug}`}
           onClick={() => navigator.vibrate?.(15)}
-          className="flex flex-col text-right hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
+          className="flex flex-col text-right hover:text-[var(--ink-black)] transition-colors max-w-[45%] active:scale-90 transform"
         >
-          <span className="text-neutral-500 dark:text-neutral-400 text-sm mb-1">
+          <span className="text-[var(--ink-medium)] text-sm mb-1">
             {language === "zh" ? "下一篇" : "Next"} →
           </span>
           <span className="underline truncate">{getTitle(nextPost)}</span>

@@ -15,7 +15,7 @@ export function BackButton() {
         }
         router.back();
       }}
-      className="mb-8 text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 transition-all active:scale-90 flex items-center text-sm"
+      className="mb-8 text-[var(--ink-medium)] hover:text-[var(--ink-black)] transition-all active:scale-90 flex items-center text-sm"
     >
       <span className="mr-1">←</span>
       {language === "zh" ? "返回" : "Back"}

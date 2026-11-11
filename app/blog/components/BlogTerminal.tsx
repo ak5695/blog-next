@@ -18,16 +18,16 @@ export function BlogTerminal({ posts }: BlogTerminalProps) {
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-8 font-mono text-sm text-neutral-500"
+                className="mb-8 font-mono text-sm text-[var(--ink-medium)]"
             >
-                <span className="text-[rgb(255,82,87)]">➜</span> ~ ./read_logs.sh --sort=newest
+                <span className="text-[var(--cli-accent)]">➜</span> ~ ./read_logs.sh --sort=newest
             </motion.div>
 
             <TerminalBlock
                 title="logs_archive.db"
                 tabs={["posts.json", "analytics.log"]}
                 activeTab="posts.json"
-                className="w-full bg-black/80 backdrop-blur-xl border-white/10"
+                className="w-full bg-[var(--surface)] backdrop-blur-xl border-[var(--border)]"
             >
                 <div className="flex flex-col gap-0 divide-y divide-white/5">
                     {posts.map((post, index) => (
@@ -37,32 +37,32 @@ export function BlogTerminal({ posts }: BlogTerminalProps) {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
-                                className="group p-3 md:p-6 hover:bg-neutral-900/40 transition-colors cursor-pointer relative overflow-hidden min-w-0"
+                                className="group p-3 md:p-6 hover:bg-[var(--surface-muted)] transition-colors cursor-pointer relative overflow-hidden min-w-0"
                             >
                                 {/* Hover Line - Expands from center outward */}
                                 <div className="absolute left-0 top-1/2 w-1 h-0 bg-[rgb(255,82,87)] group-hover:h-full group-hover:top-0 transition-all duration-300 ease-out" style={{ boxShadow: '0 0 8px rgb(255,82,87)' }} />
 
                                 <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-2">
-                                    <h3 className="text-lg md:text-xl font-bold text-neutral-200 font-mono group-hover:text-[rgb(255,82,87)] transition-colors">
+                                    <h3 className="text-lg md:text-xl font-bold text-[var(--ink-black)] font-mono group-hover:text-[var(--cli-accent)] transition-colors">
                                         {post.metadata.title}
                                     </h3>
-                                    <div className="text-xs font-mono text-neutral-600 shrink-0 mb-4 border-b border-neutral-800 pb-2">
+                                    <div className="text-xs font-mono text-[var(--ink-medium)] shrink-0 mb-4 border-b border-[var(--border)] pb-2">
                                         [{formatDate(post.metadata.publishedAt, false)}]
                                     </div>
                                 </div>
 
                                 {/* Bilingual Title if available */}
                                 {post.metadata.title_zh && (
-                                    <div className="text-sm text-neutral-500 mb-2 font-serif opacity-70">
+                                    <div className="text-sm text-[var(--ink-medium)] mb-2 font-serif opacity-70">
                                         {post.metadata.title_zh}
                                     </div>
                                 )}
 
-                                <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl line-clamp-2">
+                                <p className="text-sm text-[var(--ink-medium)] leading-relaxed max-w-2xl line-clamp-2">
                                     {post.metadata.summary}
                                 </p>
 
-                                <div className="mt-4 flex items-center text-xs font-mono text-neutral-600 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                                <div className="mt-4 flex items-center text-xs font-mono text-[var(--ink-medium)] opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
                                     ACCESS_FILE <ArrowRight className="w-3 h-3 ml-1" />
                                 </div>
                             </motion.div>
@@ -70,8 +70,8 @@ export function BlogTerminal({ posts }: BlogTerminalProps) {
                     ))}
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/10 text-xs text-neutral-600 font-mono px-3 md:px-6 pb-6">
-                    <span className="text-[rgb(255,82,87)]">END_OF_STREAM</span>: {posts.length} entries loaded.
+                <div className="mt-8 pt-4 border-t border-[var(--border)] text-xs text-[var(--ink-medium)] font-mono px-3 md:px-6 pb-6">
+                    <span className="text-[var(--cli-accent)]">END_OF_STREAM</span>: {posts.length} entries loaded.
                 </div>
             </TerminalBlock>
 

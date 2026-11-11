@@ -1,6 +1,6 @@
 import "./global.css";
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono, DotGothic16 } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -26,13 +26,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// Pixel-style font for cyberpunk aesthetic - supports Chinese/Japanese/Latin
-const dotGothic = DotGothic16({
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-pixel",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -90,22 +83,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        "text-black bg-white dark:text-white dark:bg-black",
+        "text-[var(--ink-black)] bg-[var(--paper-bg)]",
         spaceGrotesk.variable,
-        jetbrainsMono.variable,
-        dotGothic.variable
+        jetbrainsMono.variable
       )}
     >
       <head>
         <link rel="icon" href="/freedom.png" sizes="32x32" />
         <link rel="preconnect" href="https://vitals.vercel-insights.com" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
-        {/* Pixel font from Google Fonts CDN - DotGothic16 supports CJK */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased min-h-screen flex flex-col relative overflow-x-hidden selection:bg-neutral-800 selection:text-white">
+      <body className="antialiased min-h-screen flex flex-col relative overflow-x-hidden selection:bg-[var(--surface-muted)] selection:text-[var(--ink-black)]">
 
         {/* === GLOBAL EFFECTS (DISABLED FOR PERFORMANCE) === */}
         {/* <InkCursor /> */}

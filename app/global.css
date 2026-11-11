@@ -1,4 +1,3 @@
-/* ... previous imports ... */
 @import "tailwindcss";
 
 ::selection {
@@ -7,29 +6,34 @@
 }
 
 :root {
-  /* Ink Palette */
-  --ink-black: #0f0f11;
-  --ink-heavy: #1a1a1d;
-  --ink-medium: #4a4a4f;
-  --ink-wash: #8c8c93;
-  --paper-bg: #fdfbf7;
-
-  /* CLI Palette */
-  --cli-bg: #0c0c0c;
-  --cli-fg: #d4d4d4;
-  --cli-accent: #ff3e3e;
-  /* Seal Red */
-
-  /* CRT Effect */
-  --crt-scanline: rgba(18, 16, 16, 0.1);
-  --crt-flicker: rgba(255, 255, 255, 0.02);
+  color-scheme: light;
+  --paper-bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-muted: #eef0f3;
+  --ink-black: #20242c;
+  --ink-heavy: #20242c;
+  --ink-medium: #525b69;
+  --ink-wash: #525b69;
+  --border: #d5dae1;
+  --cli-bg: var(--surface);
+  --cli-fg: var(--ink-black);
+  --cli-accent: #b62935;
+  --warning: #806000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper-bg: #0f0f11;
-    --ink-black: #fdfbf7;
-    --ink-wash: #a0a0a0;
+    color-scheme: dark;
+    --paper-bg: #111318;
+    --surface: #1b1e25;
+    --surface-muted: #262b34;
+    --ink-black: #f0f2f5;
+    --ink-heavy: #f0f2f5;
+    --ink-medium: #b3bdcc;
+    --ink-wash: #b3bdcc;
+    --border: #414958;
+    --cli-accent: #ff858c;
+    --warning: #eac66a;
   }
 }
 
@@ -39,27 +43,9 @@ html {
   overflow-x: hidden;
   background-color: var(--paper-bg);
   color: var(--ink-black);
-  /* Global pixel font - cyberpunk 8-bit aesthetic with CJK support */
-  font-family: 'DotGothic16', 'VT323', 'Courier New', monospace !important;
-  font-size: 18px;
-  letter-spacing: 0.08em !important;
-}
-
-/* Compress text height for more classic pixel look - apply to text elements only */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-a,
-li,
-label,
-button {
-  transform: scaleY(0.9);
-  display: inline-block;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 body {
@@ -69,75 +55,28 @@ body {
   position: relative;
   transition: background-color 0.5s ease, color 0.5s ease;
   min-height: 100vh;
-  letter-spacing: 0.08em !important;
+
 }
 
-/* Override Tailwind's font-mono to use DotGothic16 pixel font */
-.font-mono {
-  font-family: 'DotGothic16', 'VT323', 'Courier New', monospace !important;
-  letter-spacing: 0.08em !important;
-}
-
-/* Override Tailwind tracking classes for pixel font readability */
-[class*="tracking-"] {
-  letter-spacing: 0.08em !important;
-}
-
-/* Pixel font utility class */
+.font-mono,
 .pixel-font {
-  font-family: 'DotGothic16', 'VT323', 'Courier New', monospace !important;
-  letter-spacing: 0.08em !important;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-/* Blog content uses readable font instead of pixel font */
 .prose,
 .blog-content,
 .blog-list {
-  font-family: var(--font-space-grotesk), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
 }
 
-/* CRT Scanline Overlay */
-body::after {
-  content: " ";
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
-  z-index: 9999;
-  animation: flicker 0.15s infinite;
-  opacity: 0.4;
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.9;
 }
 
-@keyframes flicker {
-  0% {
-    opacity: 0.4;
-  }
-
-  5% {
-    opacity: 0.35;
-  }
-
-  10% {
-    opacity: 0.4;
-  }
-
-  15% {
-    opacity: 0.45;
-  }
-
-  20% {
-    opacity: 0.4;
-  }
-
-  100% {
-    opacity: 0.4;
-  }
-}
+.prose p { margin-block: 1.25em; }
+.prose h2, .prose h3 { margin-top: 1.8em; font-weight: 600; }
+.prose a { color: var(--cli-accent); }
 
 /* Glitch Animation */
 @keyframes glitch {
@@ -191,7 +130,10 @@ body::after {
 }
 
 .prose pre {
-  @apply bg-neutral-900 text-neutral-200 rounded-sm border border-neutral-800 p-4 text-sm shadow-lg;
+  @apply rounded-sm border p-4 text-sm;
+  background-color: var(--surface-muted);
+  color: var(--ink-black);
+  border-color: var(--border);
   font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   max-width: 100%;
   overflow-x: auto;

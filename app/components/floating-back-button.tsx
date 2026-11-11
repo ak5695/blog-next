@@ -30,7 +30,7 @@ export function FloatingBackButton() {
         }
         router.back();
       }}
-      className={`fixed bottom-8 left-8 z-50 p-4 rounded-full bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-xl border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:scale-110 active:scale-90 active:bg-neutral-100 dark:active:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 ${
+      className={`fixed bottom-8 left-8 z-50 p-4 rounded-full bg-[var(--surface)] text-[var(--ink-black)] shadow-xl border border-[var(--border)] transition-all duration-300 hover:scale-110 active:scale-90 active:bg-[var(--surface-muted)] hover:bg-[var(--surface-muted)] ${
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-10 pointer-events-none"

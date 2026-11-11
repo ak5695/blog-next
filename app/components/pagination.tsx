@@ -17,7 +17,7 @@ export function Pagination({
       {page > 1 ? (
         <Link
           href={`/blog?page=${page - 1}`}
-          className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors text-sm"
+          className="px-4 py-2 rounded-md bg-[var(--surface-muted)] text-[var(--ink-black)] hover:bg-[var(--surface-muted)] transition-colors text-sm"
         >
           {language === "zh" ? "← 上一页" : "← Previous"}
         </Link>
@@ -25,7 +25,7 @@ export function Pagination({
         <div className="w-24" />
       )}
 
-      <span className="text-sm text-neutral-500 font-mono">
+      <span className="text-sm text-[var(--ink-medium)] font-mono">
         {language === "zh"
           ? `${page} / ${totalPages}`
           : `${page} / ${totalPages}`}
@@ -34,7 +34,7 @@ export function Pagination({
       {page < totalPages ? (
         <Link
           href={`/blog?page=${page + 1}`}
-          className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors text-sm"
+          className="px-4 py-2 rounded-md bg-[var(--surface-muted)] text-[var(--ink-black)] hover:bg-[var(--surface-muted)] transition-colors text-sm"
         >
           {language === "zh" ? "下一页 →" : "Next →"}
         </Link>

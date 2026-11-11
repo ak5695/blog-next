@@ -50,14 +50,14 @@ function BlogPostsContent({ posts }: { posts: any[] }) {
               navigator.vibrate(15);
             }
           }}
-          className="flex flex-col space-y-1 mb-4 active:scale-[0.95] active:bg-neutral-100 dark:active:bg-neutral-900 rounded-md p-2 -mx-2 transition-all"
+          className="flex flex-col space-y-1 mb-4 active:scale-[0.95] active:bg-[var(--surface-muted)] rounded-md p-2 -mx-2 transition-all"
           href={`/blog/${post.slug}`}
         >
-          <div className="w-full border-0 flex flex-col md:flex-row space-x-0 md:space-x-2 border-b-2 border-transparent hover:border-white ">
-            <p className="text-neutral-600 dark:text-neutral-400 w-[150px] tabular-nums shrink-0">
+          <div className="w-full border-0 flex flex-col md:flex-row space-x-0 md:space-x-2 border-b-2 border-transparent hover:border-[var(--border)] ">
+            <p className="text-[var(--ink-medium)] w-[150px] tabular-nums shrink-0">
               {formatDate(post.metadata.publishedAt, false)}
             </p>
-            <p className="text-neutral-900 dark:text-neutral-100 tracking-tight flex-1">
+            <p className="text-[var(--ink-black)] tracking-tight flex-1">
               {language === "zh" && post.metadata.title_zh
                 ? post.metadata.title_zh
                 : post.metadata.title}
@@ -71,7 +71,7 @@ function BlogPostsContent({ posts }: { posts: any[] }) {
           {page > 1 ? (
             <button
               onClick={handlePrev}
-              className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all text-sm active:scale-90 active:bg-neutral-300 dark:active:bg-neutral-600"
+              className="px-4 py-2 rounded-md bg-[var(--surface-muted)] text-[var(--ink-black)] hover:bg-[var(--surface-muted)] transition-all text-sm active:scale-90 active:bg-[var(--surface-muted)] "
             >
               {language === "zh" ? "← 上一页" : "← Previous"}
             </button>
@@ -79,14 +79,14 @@ function BlogPostsContent({ posts }: { posts: any[] }) {
             <div className="w-24" />
           )}
 
-          <span className="text-sm text-neutral-500 font-mono">
+          <span className="text-sm text-[var(--ink-medium)] font-mono">
             {page} / {totalPages}
           </span>
 
           {page < totalPages ? (
             <button
               onClick={handleNext}
-              className="px-4 py-2 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all text-sm active:scale-90 active:bg-neutral-300 dark:active:bg-neutral-600"
+              className="px-4 py-2 rounded-md bg-[var(--surface-muted)] text-[var(--ink-black)] hover:bg-[var(--surface-muted)] transition-all text-sm active:scale-90 active:bg-[var(--surface-muted)] "
             >
               {language === "zh" ? "下一页 →" : "Next →"}
             </button>

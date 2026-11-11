@@ -24,9 +24,9 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <aside className="w-full z-50 tracking-tight py-6 mt-8 border-t border-neutral-200 dark:border-neutral-800">
+    <aside className="w-full z-50 tracking-tight py-6 mt-8 border-t border-[var(--border)] ">
       <footer className="flex flex-col md:flex-row justify-center md:justify-start items-center max-w-2xl md:overflow-auto scroll-pr-6 mx-auto px-4 text-center md:text-left">
-        <p className="text-neutral-600 dark:text-neutral-400 text-sm">
+        <p className="text-[var(--ink-medium)] text-sm">
           © {new Date().getFullYear()} {t("footer.rights")}
         </p>
       </footer>

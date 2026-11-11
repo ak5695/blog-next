@@ -31,7 +31,7 @@ export function BlogSummary({
   if (!content) return null;
 
   return (
-    <div className="mb-8 p-4 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-md text-neutral-600 dark:text-neutral-400 italic">
+    <div className="mb-8 p-4 bg-[var(--surface-muted)] border border-[var(--border)] rounded-md text-[var(--ink-medium)] italic">
       {content}
     </div>
   );
