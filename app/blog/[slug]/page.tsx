@@ -84,7 +84,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       <div className="mb-6 flex flex-wrap items-center gap-2 font-mono text-xs text-neutral-500">
         <Link href="/blog" className="hover:text-[rgb(255,82,87)] transition-colors">~/blog</Link>
         <span>/</span>
-        <span className="text-neutral-300 break-all">{post.slug}.md</span>
+        <span className="text-neutral-600 dark:text-neutral-300 break-all">{post.slug}.md</span>
       </div>
 
       <TerminalBlock

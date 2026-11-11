@@ -32,7 +32,7 @@ export function BlogNavigation({
         <Link
           href={`/blog/${prevPost.slug}`}
           onClick={() => navigator.vibrate?.(15)}
-          className="flex flex-col text-left hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
+          className="flex flex-col text-left hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
         >
           <span className="text-neutral-500 dark:text-neutral-400 text-sm mb-1">
             ← {language === "zh" ? "上一篇" : "Previous"}
@@ -46,7 +46,7 @@ export function BlogNavigation({
         <Link
           href={`/blog/${nextPost.slug}`}
           onClick={() => navigator.vibrate?.(15)}
-          className="flex flex-col text-right hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
+          className="flex flex-col text-right hover:text-neutral-200 transition-colors max-w-[45%] active:scale-90 transform"
         >
           <span className="text-neutral-500 dark:text-neutral-400 text-sm mb-1">
             {language === "zh" ? "下一篇" : "Next"} →

@@ -65,7 +65,7 @@ export function Comments({ slug }: { slug: string }) {
 
       <form onSubmit={handleSubmit} className="mb-8 space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-1 text-neutral-600 dark:text-neutral-400">
+          <label className="block text-sm font-medium mb-1 text-neutral-400">
             {language === "zh" ? "昵称" : "Name"}
           </label>
           <input
@@ -81,7 +81,7 @@ export function Comments({ slug }: { slug: string }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1 text-neutral-600 dark:text-neutral-400">
+          <label className="block text-sm font-medium mb-1 text-neutral-400">
             {language === "zh" ? "内容" : "Comment"}
           </label>
           <textarea
@@ -121,14 +121,14 @@ export function Comments({ slug }: { slug: string }) {
             {comments.map((comment) => (
               <div key={comment.id} className="flex flex-col space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                  <span className="font-medium text-neutral-100">
                     {comment.username}
                   </span>
                   <span className="text-xs text-neutral-500">
                     {new Date(comment.createdAt).toLocaleDateString()}
                   </span>
                 </div>
-                <p className="text-neutral-600 dark:text-neutral-400 text-sm">
+                <p className="text-neutral-400 text-sm">
                   {comment.content}
                 </p>
               </div>

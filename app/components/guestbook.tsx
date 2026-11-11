@@ -114,17 +114,17 @@ export function Guestbook() {
             {comments.map((comment) => (
               <div
                 key={comment.id}
-                className="flex flex-col p-4 border border-neutral-100 dark:border-neutral-800 rounded-lg bg-neutral-50/50 dark:bg-neutral-900/50"
+                className="flex flex-col p-4 border border-neutral-100 dark:border-neutral-800 rounded-lg bg-neutral-900/50"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium text-neutral-900 dark:text-neutral-100 text-sm">
+                  <span className="font-medium text-neutral-100 text-sm">
                     {comment.username}
                   </span>
                   <span className="text-xs text-neutral-500 font-mono">
                     {new Date(comment.createdAt).toLocaleDateString()}
                   </span>
                 </div>
-                <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed whitespace-pre-wrap">
+                <p className="text-neutral-400 text-sm leading-relaxed whitespace-pre-wrap">
                   {comment.content}
                 </p>
               </div>

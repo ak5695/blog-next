@@ -182,6 +182,10 @@ body::after {
   color: var(--ink-black);
 }
 
+.prose-invert {
+  color: var(--cli-fg);
+}
+
 .prose a {
   @apply underline transition-all decoration-neutral-400 underline-offset-4 decoration-[1px];
 }

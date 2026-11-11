@@ -109,7 +109,7 @@ export function ProductList() {
                     >
                         <span className="text-[rgb(255,82,87)]">➜</span> ~ ./inventory.sh --type=module
                     </motion.div>
-                    <h1 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
+                    <h1 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white tracking-tighter">
                         {t("product.title")}
                     </h1>
                 </div>
@@ -132,7 +132,7 @@ export function ProductList() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.1 }}
-                            className="group relative border border-white/10 bg-neutral-900/40 p-4 md:p-6 h-full flex flex-col justify-between hover:border-[rgb(255,83,88)]/50 hover:bg-neutral-900/80 transition-all duration-300"
+                            className="group relative border border-white/10 bg-neutral-900 text-neutral-300 p-4 md:p-6 h-full flex flex-col justify-between hover:border-[rgb(255,83,88)]/50 hover:bg-neutral-800 transition-all duration-300"
                         >
                             {/* Pixel Corner Brackets - 8-bit Style */}
                             <PixelCorners className="opacity-0 group-hover:opacity-100 transition-all duration-300" size="md" />
